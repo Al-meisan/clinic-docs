@@ -1,6 +1,6 @@
 # PROMPTS: TASK-005 - AWS Cognito Integration
 
-# PROMPT 1: AWS Cognito User Pool Configuration and Service Setup
+# ~~PROMPT 1: AWS Cognito User Pool Configuration and Service Setup~~
 
 **Create AWS Cognito service infrastructure for healthcare user management, including user pool configuration with custom healthcare attributes, authentication methods, and the foundational NestJS service for Cognito integration.**
 
