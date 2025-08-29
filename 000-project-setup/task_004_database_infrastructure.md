@@ -45,8 +45,8 @@ performance:
     target: "< 100ms for standard CRUD operations"
     
 security:
-  - requirement: "Data encryption and access control"
-    implementation: "Encrypted connections, role-based database users, audit logging"
+  - requirement: "Data protection and access control"
+    implementation: "Secure connections, role-based database users, audit logging"
     
 compatibility:
   - requirement: "PostgreSQL version compatibility"
@@ -298,7 +298,7 @@ code_standards:
 ### From Epic
 ```yaml
 business_rules:
-  - "All patient data must be encrypted and auditable"
+  - "All patient data must be securely stored and auditable"
   - "Multi-tenant data isolation by clinic ID"
   - "Soft deletes to maintain data integrity"
   - "Audit trail for all data modifications"
@@ -323,7 +323,7 @@ integration_points:
 - [ ] Query performance meets response time requirements
 - [ ] Connection management handles concurrent users properly
 - [ ] Backup and recovery procedures documented and tested
-- [ ] Security configurations implemented (encryption, access control)
+- [ ] Security configurations implemented (data protection, access control)
 
 ### Quality Acceptance
 - [ ] All migrations tested for forward and backward compatibility

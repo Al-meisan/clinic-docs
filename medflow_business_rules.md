@@ -33,7 +33,6 @@
 
 ### Provider Registration (BR-PR001 to BR-PR008)
 - **BR-PR001**: Provider medical license number must be unique and valid
-- **BR-PR002**: Provider NPI number must be unique and follow valid format
 - **BR-PR003**: Provider must have at least one medical specialty assigned
 - **BR-PR004**: Provider credentials must include license expiration date
 - **BR-PR005**: Only users with `clinic:manage` scope can create provider records
@@ -175,7 +174,7 @@
 - **BR-S010**: User sessions must expire after configurable idle time (default 30 minutes)
 
 ### Data Security and Privacy (BR-S011 to BR-S020)
-- **BR-S011**: All patient data must be encrypted at rest and in transit
+- **BR-S011**: All patient data must be securely stored and transmitted
 - **BR-S012**: User access must be logged for audit purposes
 - **BR-S013**: Patient data export requires special authorization and audit logging
 - **BR-S014**: User password must meet complexity requirements and expire periodically
@@ -191,7 +190,7 @@
 - **BR-B001**: Bills can only be generated for completed appointments
 - **BR-B002**: Service charges must be based on established fee schedule
 - **BR-B003**: Bills must include itemized services with appropriate codes
-- **BR-B004**: Tax calculations must follow local Algerian tax regulations
+- **BR-B004**: Tax calculations must follow local tax regulations
 - **BR-B005**: Bill modifications require authorization and audit trail
 - **BR-B006**: Billing requires `billing:write` scope permissions
 

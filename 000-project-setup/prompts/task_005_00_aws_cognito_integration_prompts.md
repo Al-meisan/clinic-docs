@@ -40,7 +40,7 @@
 - Custom attributes for medical licenses, specialties, clinic association
 - Support for healthcare provider roles with credential validation
 - Multi-language support (Arabic, French) for user profiles
-- HIPAA-compliant user management with audit logging
+- healthcare privacy-compliant user management with audit logging
 
 **User Pool Requirements:**
 - MFA configuration: OPTIONAL

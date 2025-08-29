@@ -146,7 +146,7 @@ configurations.
 ## EPIC CONTEXT
 
 This security groups module is part of the foundational infrastructure setup that enables secure deployment of
-application components. It establishes the security boundaries that will protect patient data and ensure HIPAA-compliant
+application components. It establishes the security boundaries that will protect patient data and ensure healthcare privacy-compliant
 network security.
 
 ## TASK CONTEXT
@@ -159,7 +159,7 @@ with explicit allow-lists rather than broad access patterns.
 
 ## BUSINESS DOMAIN CONTEXT
 
-**Healthcare Compliance:** Security groups must support HIPAA compliance requirements by implementing network-level
+**Healthcare Compliance:** Security groups must support healthcare privacy compliance requirements by implementing network-level
 access controls and logging capabilities.
 
 **Multi-Tenancy Security:** The infrastructure must isolate different clinic deployments while allowing controlled
@@ -351,7 +351,7 @@ infrastructure/
 1. **State Isolation**
     - Each environment maintains separate Terraform state
     - Remote state backend configuration (S3 + DynamoDB)
-    - State file encryption and access controls
+    - State file secure storage and access controls
 
 2. **Variable Management**
     - Common variables defined in shared location
@@ -423,11 +423,11 @@ ensures infrastructure state consistency and provides audit trails required for 
 ## TASK CONTEXT
 
 **Task Goal:** Configure Terraform backend for state management that supports team collaboration with S3 backend,
-DynamoDB locking, and proper encryption.
+DynamoDB locking, and proper secure storage.
 
 **Critical Requirements:**
 
-- Secure state file storage with encryption
+- Secure state file storage with secure storage
 - State locking to prevent concurrent modifications
 - Access controls for infrastructure management
 - Audit logging for compliance requirements
@@ -444,7 +444,7 @@ conflicts or security issues.
 
 **Backend Configuration Components:**
 
-- S3 bucket for state storage with versioning and encryption
+- S3 bucket for state storage with versioning and secure storage
 - DynamoDB table for state locking
 - IAM roles and policies for access control
 - CloudTrail logging for audit requirements
@@ -453,7 +453,7 @@ conflicts or security issues.
 
 - Bucket naming: `medflow-terraform-state-{environment}-{region}`
 - Versioning enabled for state history
-- Server-side encryption with AWS KMS
+- Server-side secure storage with AWS KMS
 - Public access blocked
 - Lifecycle policies for cost optimization
 
@@ -462,12 +462,12 @@ conflicts or security issues.
 - Table naming: `medflow-terraform-locks-{environment}`
 - Primary key: `LockID` (String)
 - Point-in-time recovery enabled
-- Server-side encryption enabled
+- Server-side secure storage enabled
 
 ## FUNCTIONAL REQUIREMENTS
 
 1. **State Security**
-    - State files encrypted at rest and in transit
+    - State files securely stored and in transit
     - Access restricted to authorized users and CI/CD systems
     - Audit logging of all state access and modifications
 
@@ -487,7 +487,7 @@ conflicts or security issues.
 
 - State locking mechanism validation
 - Concurrent access prevention testing
-- State encryption verification
+- State secure storage verification
 - Access control policy testing
 
 **Disaster Recovery Tests:**
@@ -508,7 +508,7 @@ conflicts or security issues.
 
 ## VALIDATION CRITERIA
 
-- [ ] S3 bucket created with proper encryption and versioning
+- [ ] S3 bucket created with proper secure storage and versioning
 - [ ] DynamoDB table configured for state locking
 - [ ] Backend configuration supports all three environments (dev, staging, prod)
 - [ ] IAM roles and policies restrict access to authorized personnel

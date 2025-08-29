@@ -633,7 +633,7 @@ if ! grep -qE "$commit_regex" "$1"; then
 fi
 
 # Check for medical data references in commit messages
-if grep -qiE "(patient data|medical record|phi|hipaa)" "$1"; then
+if grep -qiE "(patient data|medical record|phi|healthcare privacy)" "$1"; then
     echo "⚠️  Warning: Commit message references sensitive medical data."
     echo "   Please ensure no actual patient information is included."
 fi

@@ -25,7 +25,7 @@ complexity: "HIGH"
 
 2. **Secret Management System**
    - Description: Secure handling of sensitive configuration data and API keys
-   - Acceptance Criteria: Secrets encrypted at rest and in transit, with role-based access
+   - Acceptance Criteria: Secrets securely stored and in transit, with role-based access
    - Priority: HIGH
 
 3. **Feature Flag System**
@@ -46,15 +46,15 @@ complexity: "HIGH"
 ### Technical Requirements
 ```yaml
 performance:
-  - requirement: "Configuration loading time < 2 seconds"
+  - requirement: "Configuration loading time"
     target: "Fast application startup with configuration initialization"
     
-  - requirement: "Feature flag evaluation < 10ms"
+  - requirement: "Feature flag evaluation"
     target: "Minimal performance impact from feature toggles"
     
 security:
-  - requirement: "Secret encryption at rest and in transit"
-    implementation: "AWS KMS encryption for sensitive configuration data"
+  - requirement: "Secret secure storage at rest and in transit"
+    implementation: "AWS KMS secure storage for sensitive configuration data"
     
   - requirement: "Role-based configuration access"
     implementation: "IAM-based access control for configuration management"
@@ -121,7 +121,7 @@ configuration_categories:
     dynamic: "Runtime toggles without deployment"
     
   - category: "Security Configuration"
-    settings: "JWT secrets, encryption keys, CORS settings"
+    settings: "JWT secrets, secure storage keys, CORS settings"
     sensitive: "All security settings encrypted and access-controlled"
 ```
 

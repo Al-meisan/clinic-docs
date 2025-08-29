@@ -46,7 +46,7 @@ performance:
     
 security:
   - requirement: "Healthcare data protection compliance"
-    implementation: "HIPAA-compliant user management with audit logging"
+    implementation: "Healthcare privacy-compliant user management with audit logging"
     
 compatibility:
   - requirement: "Multi-language user attributes"

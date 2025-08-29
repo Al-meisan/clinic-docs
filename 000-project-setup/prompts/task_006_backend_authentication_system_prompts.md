@@ -44,7 +44,7 @@ Implement JWT token validation and user context injection as the foundation for 
 **Healthcare Authentication Requirements:**
 - Healthcare provider roles require medical license validation through custom Cognito attributes
 - Multi-language support (Arabic/French) for user profiles  
-- HIPAA-compliant user management with audit logging
+- healthcare privacy-compliant user management with audit logging
 - Cross-clinic data access is prohibited unless explicitly authorized
 
 **Role Definitions:**
@@ -305,7 +305,7 @@ Create a comprehensive authorization system that enforces permission-based acces
 
 **Multi-Tenant Security Requirements:**
 - Cross-clinic data access is prohibited unless explicitly authorized
-- Healthcare data isolation ensures HIPAA compliance and patient privacy
+- Healthcare data isolation ensures healthcare privacy compliance and patient privacy
 - System administrators need controlled access to multiple clinics for management
 - Audit trail required for any cross-clinic data access attempts
 
@@ -569,7 +569,7 @@ Create a comprehensive decorator system that simplifies controller implementatio
 ## PROJECT CONTEXT
 
 **Security and Compliance Context:**
-- Healthcare applications require comprehensive audit trails for HIPAA compliance
+- Healthcare applications require comprehensive audit trails for healthcare privacy compliance
 - Authentication and authorization events must be logged for security monitoring
 - Audit logs provide forensic information for security incident investigation
 - Logging system must handle high-volume operations without performance degradation
@@ -583,7 +583,7 @@ Create a comprehensive decorator system that simplifies controller implementatio
 ## EPIC CONTEXT
 
 **Healthcare Compliance Requirements:**
-- HIPAA audit requirements for access to protected health information
+- healthcare privacy audit requirements for access to protected health information
 - Security event logging for unauthorized access attempts
 - User activity tracking for clinical decision accountability
 - Regulatory compliance reporting through comprehensive audit trails
@@ -695,7 +695,7 @@ Implement a robust audit logging system that captures all security-relevant even
 
 - Comprehensive documentation of audit event schemas and field definitions
 - Security monitoring playbook for analyzing audit logs and detecting threats
-- Compliance reporting guide for generating HIPAA and regulatory audit reports
+- Compliance reporting guide for generating healthcare privacy and regulatory audit reports
 - Integration documentation for connecting audit logs to SIEM and monitoring systems
 
 ## VALIDATION CRITERIA
@@ -736,7 +736,7 @@ Implement a robust audit logging system that captures all security-relevant even
 **Complete Authentication Infrastructure:**
 - Foundation for all healthcare workflow authentication and authorization
 - Integration point for frontend authentication and protected routes
-- Security infrastructure supporting HIPAA compliance and audit requirements
+- Security infrastructure supporting healthcare privacy compliance and audit requirements
 - Scalable authentication system supporting multi-clinic healthcare operations
 
 ## TASK CONTEXT

@@ -563,7 +563,7 @@ Create comprehensive operational runbooks and procedures for deployment, trouble
 **Healthcare Operations Requirements:**
 - 99.9% uptime requirement for clinic operations
 - Patient data backup and recovery procedures
-- HIPAA-compliant data handling during maintenance
+- healthcare privacy-compliant data handling during maintenance
 - Rapid issue resolution to minimize healthcare service disruption
 - Audit trail maintenance for compliance requirements
 

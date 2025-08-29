@@ -145,7 +145,7 @@ documentation, and provider information. Database operations must be secure, aud
 ## BUSINESS DOMAIN CONTEXT
 
 **Healthcare Data**: Patient information, clinical records, appointment scheduling
-**Compliance**: HIPAA compliance requires audit trails, secure data handling
+**Compliance**: Healthcare privacy compliance requires audit trails, secure data handling
 **Multi-tenancy**: Clinic-based data isolation and access control
 
 ## FUNCTIONAL REQUIREMENTS
@@ -382,7 +382,7 @@ different deployment environments.
     - Required vs optional setting validation
 
 3. **Secure Secret Management**
-    - Environment variable encryption for secrets
+    - Environment variable secure storage for secrets
     - Secure credential handling patterns
     - No hardcoded sensitive values
 

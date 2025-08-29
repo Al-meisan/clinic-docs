@@ -62,7 +62,7 @@ authentication_architecture:
     - aws_amplify: "AWS Amplify for simplified Cognito integration"
     - cognito_identity_sdk: "Direct AWS Cognito SDK integration"
     - jwt_decode: "Token parsing and validation"
-    - secure_storage: "Token storage with encryption"
+    - secure_storage: "Token storage with secure storage"
     
   state_management:
     - auth_context: "React Context for authentication state"
@@ -412,7 +412,7 @@ export class CognitoAuth {
   }
 
   async storeTokens(authResult: AuthResult): Promise<void> {
-    // Store tokens securely (consider encryption for sensitive environments)
+    // Store tokens securely (consider secure storage for sensitive environments)
     localStorage.setItem('medflow_auth', JSON.stringify({
       accessToken: authResult.accessToken,
       refreshToken: authResult.refreshToken,
@@ -812,7 +812,7 @@ tech_stack_references:
   - "AWS Cognito for user authentication and management"
   - "React Context API for global authentication state"
   - "JWT tokens with automatic refresh mechanism"
-  - "Secure token storage with encryption considerations"
+  - "Secure token storage with secure storage considerations"
   
 architecture_patterns:
   - "Provider pattern for authentication context"

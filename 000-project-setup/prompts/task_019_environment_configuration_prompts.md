@@ -108,7 +108,7 @@ architecture:
 
 # PROMPT 2: AWS Secrets Manager Integration
 
-Implement secure secret management integration with AWS Secrets Manager for the NestJS configuration system, enabling secure storage and retrieval of sensitive configuration data like database passwords, API keys, and encryption secrets.
+Implement secure secret management integration with AWS Secrets Manager for the NestJS configuration system, enabling secure storage and retrieval of sensitive configuration data like database passwords, API keys, and secure storage secrets.
 
 ## PROJECT CONTEXT
 
@@ -120,7 +120,7 @@ Implement secure secret management integration with AWS Secrets Manager for the 
 
 **Security Requirements:**
 - Healthcare compliance requires secure configuration management
-- Secrets encrypted at rest and in transit using AWS KMS
+- Secrets securely stored and in transit using AWS KMS
 - Role-based access control for secret management
 - Configuration audit trail for compliance
 
@@ -133,9 +133,9 @@ Part of the Project Setup and Infrastructure epic, building on the foundational 
 **Priority:** HIGH - Critical for production deployment security
 
 ## BUSINESS DOMAIN CONTEXT
-**Healthcare Data Security:** Medical applications require strict security controls for all sensitive configuration data, including database connections, external API integrations, and encryption keys.
+**Healthcare Data Security:** Medical applications require strict security controls for all sensitive configuration data, including database connections, external API integrations, and secure storage keys.
 
-**Compliance Requirements:** Configuration audit trails and encrypted secret storage are necessary for healthcare compliance (HIPAA, SOC 2).
+**Compliance Requirements:** Configuration audit trails and encrypted secret storage are necessary for healthcare compliance (healthcare privacy, SOC 2).
 
 ## FUNCTIONAL REQUIREMENTS
 
@@ -147,7 +147,7 @@ Part of the Project Setup and Infrastructure epic, building on the foundational 
 2. **Secret Retrieval System**
    - Secure retrieval of database credentials
    - API key management for external integrations
-   - Encryption key retrieval for data protection
+   - secure storage key retrieval for data protection
 
 3. **Secret Caching Strategy**
    - Memory-based caching with TTL for performance
@@ -163,8 +163,8 @@ Part of the Project Setup and Infrastructure epic, building on the foundational 
 
 ```yaml
 security:
-  - requirement: "Secret encryption at rest and in transit"
-    implementation: "AWS KMS encryption for sensitive configuration data"
+  - requirement: "Secret secure storage at rest and in transit"
+    implementation: "AWS KMS secure storage for sensitive configuration data"
     
   - requirement: "Role-based configuration access"
     implementation: "IAM-based access control for configuration management"
@@ -213,7 +213,7 @@ reliability:
 ## VALIDATION CRITERIA
 - [ ] AWS Secrets Manager client properly configured with regional settings
 - [ ] Database credentials retrieved securely from AWS Secrets Manager
-- [ ] API keys and encryption secrets managed through secret service
+- [ ] API keys and secure storage secrets managed through secret service
 - [ ] Secret caching implemented with appropriate TTL and security considerations
 - [ ] Environment-specific secret paths working (clinic-app/dev/*, clinic-app/staging/*, clinic-app/prod/*)
 - [ ] Graceful error handling for AWS service outages with fallback mechanisms

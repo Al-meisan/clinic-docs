@@ -20,7 +20,7 @@ complexity: "HIGH"
 ### Functional Requirements
 1. **Developer Setup Guide**
    - Description: Step-by-step setup instructions for local development environment
-   - Acceptance Criteria: New developer can set up complete environment in under 30 minutes
+   - Acceptance Criteria: New developer can set up complete environment quickly
    - Priority: HIGH
 
 2. **API Documentation**
@@ -46,10 +46,10 @@ complexity: "HIGH"
 ### Technical Requirements
 ```yaml
 performance:
-  - requirement: "Documentation site load time < 3 seconds"
+  - requirement: "Documentation site load time"
     target: "Fast access to developer resources"
     
-  - requirement: "Search functionality response time < 1 second"
+  - requirement: "Search functionality response time"
     target: "Quick information discovery"
     
 security:
@@ -353,7 +353,7 @@ integration_points:
 ## Acceptance Criteria
 
 ### Functional Acceptance
-- [ ] Developer setup guide enables 30-minute environment setup
+- [ ] Developer setup guide enables quick environment setup
 - [ ] Complete API documentation with interactive Swagger UI
 - [ ] Coding standards document covers all tech stack components
 - [ ] Architecture documentation explains system design decisions

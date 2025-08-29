@@ -133,7 +133,7 @@ Core authentication infrastructure requiring robust Cognito integration for:
 2. **Token Management**
    - JWT token parsing and validation
    - Automatic token refresh before expiration
-   - Secure token storage with encryption considerations
+   - Secure token storage with secure storage considerations
    - Token cleanup on logout
 
 3. **User Profile Management**
@@ -158,7 +158,7 @@ Core authentication infrastructure requiring robust Cognito integration for:
 
 **Security:**
 - Secure credential handling
-- Token encryption for storage
+- Token secure storage for storage
 - Proper cleanup of sensitive data
 - OWASP security best practices
 

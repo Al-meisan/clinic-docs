@@ -23,7 +23,7 @@
 
 **Performance Requirements:** Pipeline execution time < 15 minutes for complete pipeline including tests and deployment.
 
-**Healthcare Compliance:** Automated HIPAA compliance checks and security vulnerability scanning with complete audit trail of all pipeline activities.
+**Healthcare Compliance:** Automated healthcare privacy compliance checks and security vulnerability scanning with complete audit trail of all pipeline activities.
 
 **Reliability:** Pipeline success rate > 95% success rate for valid code changes.
 
@@ -56,7 +56,7 @@
 
 3. **Healthcare Compliance Validation**
    - Automated PHI exposure detection in code and test files
-   - HIPAA compliance checks for data handling patterns
+   - healthcare privacy compliance checks for data handling patterns
    - Medical data security validation
    - Patient privacy compliance enforcement
 
@@ -137,7 +137,7 @@ reliability:
 ## PROJECT CONTEXT
 **Security-First DevOps:** Infrastructure as Code with Terraform security validation, containerized application security scanning, automated security vulnerability detection, healthcare compliance enforcement.
 
-**Healthcare Compliance:** HIPAA compliance validation, patient data protection, medical data handling security, audit trail requirements for all security validations.
+**Healthcare Compliance:** healthcare privacy compliance validation, patient data protection, medical data handling security, audit trail requirements for all security validations.
 
 **Current Infrastructure:** Existing GitHub Actions CI pipeline with code quality and testing, AWS infrastructure managed through Terraform, NestJS backend and React frontend applications.
 
@@ -161,7 +161,7 @@ reliability:
 - Vulnerability management is critical for patient safety
 
 **Compliance Standards:**
-- HIPAA compliance for patient data protection
+- healthcare privacy compliance for patient data protection
 - Security vulnerability management
 - Infrastructure security validation
 - Code-level security enforcement

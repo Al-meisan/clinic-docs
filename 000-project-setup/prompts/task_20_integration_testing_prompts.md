@@ -148,7 +148,7 @@ Building robust testing infrastructure that supports reliable, repeatable test e
 ## BUSINESS DOMAIN CONTEXT
 
 **Healthcare Data Requirements:**
-- HIPAA-compliant test data handling (no real patient information)
+- healthcare privacy-compliant test data handling (no real patient information)
 - Realistic medical scenarios for workflow testing
 - Insurance and billing data patterns
 - Provider schedule and availability patterns
@@ -405,7 +405,7 @@ Establishing reliable testing infrastructure that ensures consistent test execut
 ## BUSINESS DOMAIN CONTEXT
 
 **Healthcare Environment Requirements:**
-- HIPAA compliance across all testing environments
+- healthcare privacy compliance across all testing environments
 - Data isolation between environments
 - Audit trail preservation for compliance testing
 - Performance validation matching production requirements

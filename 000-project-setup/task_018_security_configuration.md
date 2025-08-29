@@ -5,7 +5,7 @@
 ### Goal
 **What to Build:** Implement comprehensive security configuration including security headers, CORS, rate limiting, input validation, and security best practices for the clinic management system.
 
-**Why:** Critical for healthcare data protection, HIPAA compliance, preventing security vulnerabilities, and protecting sensitive patient information from unauthorized access and attacks.
+**Why:** Critical for healthcare data protection, Algerian healthcare privacy compliance, preventing security vulnerabilities, and protecting sensitive patient information from unauthorized access and attacks.
 
 **Definition of Done:** Complete security hardening implemented across all application layers with penetration testing validation and compliance verification.
 
@@ -46,18 +46,18 @@ complexity: "HIGH"
 ### Technical Requirements
 ```yaml
 performance:
-  - requirement: "Security checks add < 50ms latency per request"
+  - requirement: "Security checks add minimal latency per request"
     target: "Minimal performance impact from security measures"
     
-  - requirement: "Rate limiting response time < 10ms"
+  - requirement: "Rate limiting response time"
     target: "Fast rate limit decision making"
     
 security:
   - requirement: "OWASP Top 10 vulnerability protection"
     implementation: "Comprehensive protection against common web vulnerabilities"
     
-  - requirement: "HIPAA compliance security controls"
-    implementation: "Healthcare-specific security requirements and audit controls"
+  - requirement: "Healthcare privacy compliance security controls"
+    implementation: "Algerian healthcare-specific security requirements and audit controls"
     
   - requirement: "Zero trust security model"
     implementation: "Authentication and authorization required for all operations"
@@ -516,8 +516,8 @@ code_standards:
 ### From Epic
 ```yaml
 business_rules:
-  - "Healthcare data requires HIPAA compliance security"
-  - "Patient information must be encrypted and access-controlled"
+  - "Healthcare data requires Algerian healthcare privacy compliance"
+  - "Patient information must be securely stored and access-controlled"
   - "Audit trail required for all data access and modifications"
   
 domain_model:
@@ -545,7 +545,7 @@ integration_points:
 - [ ] Security tests written and passing (>= 95% coverage)
 - [ ] Penetration testing completed with no critical vulnerabilities
 - [ ] Performance impact of security measures within acceptable limits
-- [ ] HIPAA compliance requirements met and documented
+- [ ] Healthcare privacy compliance requirements met and documented
 
 ### Quality Acceptance
 - [ ] Security review completed and approved by security team

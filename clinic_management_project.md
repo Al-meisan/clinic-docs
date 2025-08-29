@@ -458,10 +458,10 @@ git_commits: "<type>(<scope>): <short summary>"
   - Performance testing with React DevTools Profiler
 
 - **Performance:** 
-  - Page load < 3s
-  - API response < 500ms for most endpoints
-  - Database queries > 100ms logged and optimized
-  - 99% system uptime
+  - Optimal page loading
+  - Fast API responses
+  - Efficient database queries
+  - High system availability
   - Lazy loading for non-critical features
 
 - **Accessibility:** 
@@ -473,9 +473,8 @@ git_commits: "<type>(<scope>): <short summary>"
   - RTL layout support for Arabic
 
 - **Security:** 
-  - Algerian healthcare data protection regulations compliance
   - GDPR compliance for data protection
-  - Data encryption at rest and in transit
+  - Secure data handling and protection
   - OAuth2 scope-based authorization
   - Input validation and sanitization
   - Regular security audits and dependency updates
@@ -596,11 +595,9 @@ entities:
     - middleName: string (optional)
     - dateOfBirth: Date
     - gender: Gender
-    - ssn: string (last 4 digits only)
     - status: PatientStatus
     - contactInfo: ContactInfo
     - emergencyContacts: EmergencyContact[]
-    - insurance: InsuranceInfo
     - medicalHistory: MedicalHistory
     - preferredLanguage: string (ar/fr)
     - preferredContactMethod: ContactMethod
@@ -796,8 +793,6 @@ entities:
     - medicalLicense: string
     - licenseState: string
     - licenseExpiration: Date
-    - npiNumber: string
-    - boardCertifications: string[]
     - specialtyLicenses: string[]
     
   ProviderSchedule:
@@ -965,7 +960,6 @@ entities:
     - amount: number
     - currency: string (DZD)
     - services: BillItem[]
-    - insurance: InsuranceClaim (optional)
     - status: BillStatus
     - dueDate: Date
     - paidDate: Date (optional)
@@ -993,27 +987,6 @@ entities:
     - processedAt: DateTime (optional)
     - notes: string (optional)
     - createdAt: DateTime
-    
-  InsuranceInfo:
-    - provider: string
-    - policyNumber: string
-    - groupNumber: string (optional)
-    - subscriberId: string
-    - subscriberName: string
-    - copayAmount: number (optional)
-    - deductible: number (optional)
-    - isActive: boolean
-    - expirationDate: Date (optional)
-    
-  InsuranceClaim:
-    - id: UUID
-    - billId: UUID
-    - claimNumber: string
-    - submittedDate: Date
-    - status: ClaimStatus
-    - approvedAmount: number (optional)
-    - paidAmount: number (optional)
-    - denialReason: string (optional)
 
   # Waiting List & Scheduling
   WaitingListEntry:
@@ -1344,16 +1317,7 @@ enums:
     - card
     - bank_transfer
     - check
-    - insurance
     - installment
-    
-  ClaimStatus:
-    - submitted
-    - pending
-    - approved
-    - denied
-    - partial_approval
-    - resubmitted
     
   # Clinic & System Enums
   ClinicMode:
@@ -1426,10 +1390,6 @@ external_services:
     auth: "IAM roles and policies"
     docs: "https://docs.aws.amazon.com/s3/"
     
-  - service: "Algeria Health Ministry APIs (Future)"
-    purpose: "Integration with national health systems"
-    auth: "Government-issued credentials"
-    docs: "Ministry of Health API specifications"
 ```
 
 ### Internal Services

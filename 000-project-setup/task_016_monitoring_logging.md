@@ -46,15 +46,15 @@ complexity: "HIGH"
 ### Technical Requirements
 ```yaml
 performance:
-  - requirement: "Log ingestion latency < 30 seconds"
-    target: "Real-time log availability for troubleshooting"
+  - requirement: "Log ingestion latency"
+    target: "Timely log availability for troubleshooting"
     
-  - requirement: "Dashboard load time < 5 seconds"
+  - requirement: "Dashboard load time"
     target: "Responsive monitoring interface"
     
 security:
-  - requirement: "Log data encryption at rest and in transit"
-    implementation: "CloudWatch encryption and secure log transmission"
+  - requirement: "Log data secure storage at rest and in transit"
+    implementation: "CloudWatch secure storage and secure log transmission"
     
   - requirement: "Access control for monitoring data"
     implementation: "IAM roles and policies for monitoring access"
@@ -304,7 +304,7 @@ e2e_tests:
 happy_path:
   - scenario: "Metric successfully recorded to CloudWatch"
     steps: ["Generate application event", "Record custom metric", "Verify metric in CloudWatch"]
-    expected_result: "Metric appears in CloudWatch dashboard within 30 seconds"
+    expected_result: "Metric appears in CloudWatch dashboard promptly"
     
 error_cases:
   - scenario: "CloudWatch service unavailable"
