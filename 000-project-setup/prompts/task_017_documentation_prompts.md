@@ -8,21 +8,20 @@ Create a comprehensive developer setup guide that enables new team members to se
 
 **MedFlow Project Overview:**
 - Healthcare clinic management system for Algerian single-doctor practices
-- Tech Stack: NestJS Backend with TypeScript, React Frontend with TypeScript, AWS Infrastructure
-- Three main repositories: clinic-backend, clinic-portal, clinic-infra
-- Uses AWS Cognito for authentication, PostgreSQL for database, Terraform for infrastructure
+- Tech Stack: NestJS Backend with TypeScript, React Frontend with TypeScript, Backend Infrastructure
+- Two main repositories: clinic-backend, clinic-portal
+- Uses JWT authentication, PostgreSQL for database
 
 **Current Repository Structure:**
-- Backend: NestJS with TypeScript, TypeORM, AWS SDK integration
+- Backend: NestJS with TypeScript, TypeORM, authentication integration
 - Frontend: React with TypeScript, Vite, Tailwind CSS, shadcn/ui components
-- Infrastructure: Terraform modules for AWS services (VPC, RDS, ECS, Cognito, S3)
 
 ## EPIC CONTEXT  
 
 **EPIC-000 Project Setup and Infrastructure:**
 - Goal: Establish foundational technical infrastructure and development environment
 - Success Criteria: Development environment can be set up by new developers in under 30 minutes
-- All three repositories properly configured with development tools and standards
+- Both repositories properly configured with development tools and standards
 
 ## TASK Context
 
@@ -45,14 +44,14 @@ Create a comprehensive developer setup guide that enables new team members to se
    - Node.js version requirements and installation instructions
    - Package manager setup (npm/yarn) with recommended versions
    - Git configuration and SSH key setup for repository access
-   - AWS CLI installation and configuration for development
+   - Database setup for local development
    - Docker setup for local database and services
 
 2. **Repository Setup Instructions**
-   - Step-by-step cloning of all three repositories
+   - Step-by-step cloning of both repositories
    - Environment variable configuration with examples
    - Database setup and migration procedures
-   - AWS service configuration for local development
+   - Backend service configuration for local development
    - Verification commands to ensure proper setup
 
 3. **Development Workflow Documentation**
@@ -66,7 +65,7 @@ Create a comprehensive developer setup guide that enables new team members to se
    - Common setup issues and their solutions
    - Port conflicts and resolution steps
    - Database connection problems
-   - AWS service connectivity issues
+   - Backend service connectivity issues
    - Performance optimization for development environment
 
 ## TECHNICAL REQUIREMENTS
@@ -111,12 +110,12 @@ Create a comprehensive developer setup guide that enables new team members to se
 
 ## VALIDATION CRITERIA
 
-- [ ] Complete setup guide covers all three repositories (clinic-backend, clinic-portal, clinic-infra)
+- [ ] Complete setup guide covers both repositories (clinic-backend, clinic-portal)
 - [ ] Prerequisites section lists all required tools with version numbers
 - [ ] Step-by-step instructions are clear and unambiguous
 - [ ] Environment variable setup includes complete examples with explanations
 - [ ] Database setup and migration procedures are documented
-- [ ] AWS service configuration for development environment is covered
+- [ ] Backend service configuration for development environment is covered
 - [ ] Verification steps confirm successful setup of each component
 - [ ] Troubleshooting section addresses at least 5 common setup issues
 - [ ] Cross-platform instructions provided for Windows, macOS, and Linux
@@ -133,7 +132,7 @@ Implement a comprehensive API documentation system using Swagger/OpenAPI that au
 **MedFlow Backend Architecture:**
 - NestJS application with TypeScript
 - Domain-driven design with feature modules
-- JWT authentication with AWS Cognito integration
+- JWT authentication with backend integration
 - RESTful API design with standardized response formats
 - Role-based access control with OAuth2 scopes
 
@@ -251,14 +250,13 @@ Implement a comprehensive API documentation system using Swagger/OpenAPI that au
 
 # PROMPT 3: Coding Standards Documentation Creation
 
-Create comprehensive coding standards and guidelines documentation covering all tech stack components (NestJS backend, React frontend, TypeScript, AWS integrations). The documentation should include detailed patterns, best practices, naming conventions, file organization, and code examples that establish consistent development practices across the healthcare application.
+Create comprehensive coding standards and guidelines documentation covering all tech stack components (NestJS backend, React frontend, TypeScript, backend integrations). The documentation should include detailed patterns, best practices, naming conventions, file organization, and code examples that establish consistent development practices across the healthcare application.
 
 ## PROJECT CONTEXT
 
 **MedFlow Technology Stack:**
-- Backend: NestJS with TypeScript, TypeORM for database, AWS SDK
+- Backend: NestJS with TypeScript, TypeORM for database, authentication SDK
 - Frontend: React with TypeScript, Tailwind CSS, shadcn/ui components
-- Infrastructure: Terraform for AWS resource management
 - Database: PostgreSQL with TypeORM migrations
 
 **Established Coding Patterns:**
@@ -298,7 +296,7 @@ Create comprehensive coding standards and guidelines documentation covering all 
    - DTO design and validation standards
    - Database entity and migration patterns
    - Error handling and logging standards
-   - AWS service integration patterns
+   - Backend service integration patterns
 
 2. **Frontend Coding Standards (React/TypeScript)**
    - Component design and organization principles
@@ -382,7 +380,7 @@ Create comprehensive coding standards and guidelines documentation covering all 
 - [ ] All code examples are tested and working
 - [ ] Standards address multi-language support implementation
 - [ ] Error handling patterns protect patient privacy while providing useful feedback
-- [ ] AWS integration patterns are documented with security considerations
+- [ ] Backend integration patterns are documented with security considerations
 - [ ] Git workflow and commit message standards are clearly defined
 
 # PROMPT 4: Architecture Documentation Creation
@@ -393,24 +391,23 @@ Create comprehensive system architecture documentation that explains the technic
 
 **MedFlow System Architecture:**
 - Microservices architecture with NestJS backend and React frontend
-- AWS cloud infrastructure with managed services (Cognito, RDS, ECS, S3)
+- Backend infrastructure with managed services
 - Domain-driven design with feature-based module organization
 - Event-driven patterns for audit logging and notifications
 - Multi-tenant architecture supporting single-doctor and multi-provider modes
 
 **Current System Components:**
-- Authentication service with AWS Cognito integration
+- Authentication service with backend integration
 - Backend API with role-based access control
 - Frontend application with responsive layouts
 - Database layer with PostgreSQL and TypeORM
-- Infrastructure as Code with Terraform
 
 ## EPIC CONTEXT  
 
 **EPIC-000 Project Setup and Infrastructure:**
 - Foundation architecture established for future feature development
 - Technical decisions made for scalability and healthcare compliance
-- Integration patterns defined for AWS services and internal components
+- Integration patterns defined for backend services and internal components
 
 ## TASK Context
 
@@ -451,7 +448,7 @@ Create comprehensive system architecture documentation that explains the technic
    - Error handling and recovery patterns
 
 4. **Integration Patterns**
-   - AWS Cognito integration for user management
+   - Authentication integration for user management
    - Database integration with TypeORM patterns
    - Frontend-backend API communication standards
    - Third-party service integration patterns
@@ -503,7 +500,7 @@ Create comprehensive system architecture documentation that explains the technic
 - Component diagrams for backend and frontend architecture
 - Sequence diagrams for authentication and key workflows
 - Entity relationship diagrams for database design
-- Deployment diagrams for AWS infrastructure
+- Deployment diagrams for backend infrastructure
 
 ## VALIDATION CRITERIA
 

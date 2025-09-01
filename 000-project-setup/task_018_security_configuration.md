@@ -146,7 +146,7 @@ dependencies:
     type: "APPLICATION"
     status: "AVAILABLE"
     
-  - dependency: "AWS Cognito Authentication (TASK-005)"
+  - dependency: "JWT Authentication (TASK-005)"
     type: "SERVICE"
     status: "AVAILABLE"
     
@@ -500,7 +500,7 @@ edge_cases:
 tech_stack_references:
   - "NestJS security middleware and guards"
   - "React security hooks and input validation"
-  - "AWS Cognito secure authentication integration"
+  - "JWT secure authentication integration"
   
 architecture_patterns:
   - "Defense in depth security strategy"
@@ -526,7 +526,7 @@ domain_model:
   - "Appointment data protected with appropriate access controls"
   
 integration_points:
-  - "AWS security services integration for compliance"
+  - "Security services integration for compliance"
   - "Third-party API security for external integrations"
   - "Multi-tenant security isolation requirements"
 ```

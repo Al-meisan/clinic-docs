@@ -18,7 +18,7 @@ Implement comprehensive HTTP security headers middleware for the NestJS backend 
 
 **Business Requirements**: Healthcare application requiring healthcare privacy compliance and comprehensive security protection for sensitive patient data. Zero trust security model implementation with defense in depth strategy.
 
-**Integration Points**: Security middleware must integrate with existing authentication system (AWS Cognito) and apply to all API routes consistently.
+**Integration Points**: Security middleware must integrate with existing authentication system (JWT authentication) and apply to all API routes consistently.
 
 ## TASK CONTEXT
 
@@ -109,13 +109,13 @@ Implement secure Cross-Origin Resource Sharing (CORS) configuration for the Nest
 
 ## PROJECT CONTEXT
 
-**Tech Stack**: NestJS with TypeScript backend, React frontend with TypeScript, AWS infrastructure supporting multi-environment deployment (dev, staging, production).
+**Tech Stack**: NestJS with TypeScript backend, React frontend with TypeScript, backend infrastructure supporting multi-environment deployment (dev, staging, production).
 
 **Current Application State**: 
 - NestJS backend with API endpoints established
 - Environment configuration system in place
 - Frontend React application consuming backend APIs
-- Authentication system using AWS Cognito tokens
+- Authentication system using JWT tokens
 
 ## EPIC CONTEXT
 
@@ -213,7 +213,7 @@ Implement comprehensive rate limiting system for the NestJS backend using Redis 
 
 ## PROJECT CONTEXT
 
-**Tech Stack**: NestJS with TypeScript backend, Redis for caching and session storage, AWS infrastructure with auto-scaling capabilities.
+**Tech Stack**: NestJS with TypeScript backend, Redis for caching and session storage, backend infrastructure with auto-scaling capabilities.
 
 **Current Infrastructure**: 
 - NestJS application with guard and interceptor architecture
@@ -457,14 +457,14 @@ export class MedicalRecordNumberValidator implements ValidatorConstraintInterfac
 
 # PROMPT 5: Authentication Security Enhancement
 
-Enhance the existing AWS Cognito authentication system with secure session management, brute force protection, token handling best practices, and comprehensive security logging to provide robust authentication security.
+Enhance the existing JWT authentication system with secure session management, brute force protection, token handling best practices, and comprehensive security logging to provide robust authentication security.
 
 ## PROJECT CONTEXT
 
-**Tech Stack**: NestJS backend with AWS Cognito integration, JWT token handling, existing authentication guards and decorators.
+**Tech Stack**: NestJS backend with JWT authentication integration, JWT token handling, existing authentication guards and decorators.
 
 **Current Authentication State**:
-- AWS Cognito user pool integration established
+- JWT authentication integration established
 - JWT token validation implemented
 - Basic authentication guards in place
 - User role and permission system operational

@@ -116,7 +116,7 @@ provides:
     
   - deliverable: "Build and development system"
     interface: "Vite configuration for development and production"
-    consumers: "CI/CD pipeline and developer workflow"
+    consumers: "Developer workflow"
     
   - deliverable: "Project architecture template"
     interface: "Folder structure and coding standards"
@@ -332,7 +332,7 @@ integration_tests:
   
 performance_tests:
   - focus: "Build performance and bundle size"
-  - test_environment: "CI/CD environment"
+  - test_environment: "Development environment"
   - key_scenarios: ["build_time", "bundle_analysis", "startup_performance"]
 ```
 
@@ -408,7 +408,7 @@ integration_points:
 
 ### Quality Acceptance
 - [ ] All development tools integrated and functional
-- [ ] Build process tested in CI/CD environment
+- [ ] Build process tested in development environment
 - [ ] Code quality standards enforced automatically
 - [ ] Documentation includes setup instructions and development workflow
 - [ ] Project structure supports scalable feature development

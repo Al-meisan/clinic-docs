@@ -210,7 +210,7 @@ Brief description of the module's purpose and functionality.
 ## Prerequisites
 - Node.js 18+
 - PostgreSQL 13+
-- AWS CLI configured
+- Docker configured
 
 ## Installation
 ```bash
@@ -345,7 +345,7 @@ domain_model:
   - "Appointment scheduling business logic detailed"
   
 integration_points:
-  - "AWS services integration procedures documented"
+  - "Backend services integration procedures documented"
   - "Third-party API integration examples provided"
   - "Inter-service communication patterns explained"
 ```

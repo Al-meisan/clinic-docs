@@ -67,7 +67,7 @@ complexity: "HIGH"
         - All patient data securely stored in database
         - HTTPS enforced for all API communications
         - Sensitive medical data has additional protection
-        - Data security keys managed securely with AWS
+        - Data security keys managed securely with cloud services
     - Priority: MEDIUM
 
 ### Technical Requirements
@@ -81,11 +81,11 @@ security:
     implementation: "Database audit tables with immutable logging"
 
   - requirement: "Data protection"
-    implementation: "AWS RDS security and application-level protection for sensitive fields"
+    implementation: "Database security and application-level protection for sensitive fields"
 
 authentication:
   - requirement: "JWT token validation"
-    implementation: "AWS Cognito JWT validation with scope checking"
+    implementation: "JWT validation with scope checking"
 
   - requirement: "Session management"
     implementation: "Secure session handling with proper token refresh"
@@ -103,8 +103,8 @@ compliance:
 # Backend Security Implementation
 authentication_guards:
   - guard_type: "JWT Authentication Guard"
-    purpose: "Validate AWS Cognito JWT tokens"
-    implementation: "Custom NestJS guard with Cognito integration"
+    purpose: "Validate JWT tokens"
+    implementation: "Custom NestJS guard with JWT integration"
 
   - guard_type: "Scopes Authorization Guard"
     purpose: "Check user scopes against required permissions"
@@ -141,7 +141,7 @@ audit_implementation:
 # Data Protection Strategy
 protection_layers:
   - layer: "Database Security"
-    implementation: "AWS RDS secure storage"
+    implementation: "Database secure storage"
     coverage: "All database data"
 
   - layer: "Application-Level Protection"
@@ -157,7 +157,7 @@ protection_layers:
 
 ```yaml
 dependencies:
-  - dependency: "AWS Cognito User Pool configuration"
+  - dependency: "JWT authentication configuration"
     type: "SERVICE"
     status: "AVAILABLE"
 
@@ -169,7 +169,7 @@ dependencies:
     type: "DATABASE"
     status: "AVAILABLE"
 
-  - dependency: "AWS security services for data protection"
+  - dependency: "Cloud security services for data protection"
     type: "SERVICE"
     status: "PLANNED"
 
@@ -209,7 +209,7 @@ export class AuthGuard implements CanActivate {
         }
 
         try {
-            // Validate JWT token with AWS Cognito
+            // Validate JWT token
             const payload = await this.jwtService.verifyAsync(token);
 
             // Attach user info to request
@@ -664,7 +664,7 @@ security_tests:
 authentication_tests:
   - scenario: "Valid JWT token authentication"
     steps:
-      - "Present valid AWS Cognito JWT token"
+      - "Present valid JWT token"
       - "Access protected patient endpoint"
     expected_result: "Access granted with proper user context"
 
@@ -689,7 +689,7 @@ audit_logging_tests:
 
 ```yaml
 tech_stack_references:
-  - "AWS Cognito for user management and JWT tokens"
+  - "JWT authentication for user management and tokens"
   - "NestJS guards and decorators for authorization"
   - "PostgreSQL for secure audit log storage"
 
@@ -734,7 +734,7 @@ integration_points:
 
 ### Technical Acceptance
 
-- [ ] JWT token validation integrated with AWS Cognito
+- [ ] JWT token validation integrated with authentication service
 - [ ] NestJS guards and decorators properly implemented
 - [ ] Audit interceptor captures all required operations
 - [ ] Database security enabled for patient data

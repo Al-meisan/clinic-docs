@@ -3,11 +3,11 @@
 ## Task Overview
 
 ### Goal
-**What to Build:** Create and configure three main repositories (clinic-backend, clinic-portal, clinic-infra) with proper documentation, development environment setup, and initial project structure.
+**What to Build:** Create and configure two main repositories (clinic-backend, clinic-portal) with proper documentation, development environment setup, and initial project structure.
 
 **Why:** Establishes the foundational repository structure and development standards for the MedFlow project, enabling efficient team collaboration and standardized development practices.
 
-**Definition of Done:** All three repositories are created with complete setup documentation, proper gitignore files, development tool configuration, and team members can clone and run basic setup within 30 minutes.
+**Definition of Done:** Both repositories are created with complete setup documentation, proper gitignore files, development tool configuration, and team members can clone and run basic setup within 30 minutes.
 
 ### Scope
 ```yaml
@@ -19,8 +19,8 @@ complexity: "MEDIUM"
 
 ### Functional Requirements
 1. **Repository Creation and Structure**
-   - Description: Create three separate repositories with standardized folder structure and naming conventions
-   - Acceptance Criteria: All repositories follow naming convention (clinic-backend, clinic-portal, clinic-infra) with proper initial structure
+   - Description: Create two separate repositories with standardized folder structure and naming conventions
+   - Acceptance Criteria: Both repositories follow naming convention (clinic-backend, clinic-portal) with proper initial structure
    - Priority: HIGH
 
 2. **Development Environment Documentation**
@@ -75,11 +75,10 @@ repository_structure:
     - vite.config.ts
     - src/ (placeholder structure)
     
-  clinic-infra:
-    - README.md
-    - .gitignore
-    - environments/ (dev, staging, prod folders)
-    - modules/ (placeholder structure)
+  deployment:
+    - docker/
+    - docker-compose.yml
+    - config/ (dev, staging, prod folders)
     - scripts/
 
 development_tools:
@@ -114,7 +113,7 @@ provides:
 
 **Repository Naming Conventions:**
 - Use lowercase with hyphens for repository names
-- Prefix with project name for clarity (clinic-backend, clinic-portal, clinic-infra)
+- Prefix with project name for clarity (clinic-backend, clinic-portal)
 - Follow consistent naming across all repositories
 
 **Documentation Standards:**
@@ -125,7 +124,6 @@ provides:
 **Git Configuration:**
 - Implement branch protection for main/master branch (if possible)
 - Require pull requests for all changes (if possible)
-- Set up status checks for CI/CD integration
 - Use conventional commit message format: `<type>(<scope>): <description>`
 
 ## Testing Requirements
@@ -169,7 +167,7 @@ tech_stack_references:
   - "TypeScript for all development"
   - "NestJS for backend development"
   - "React with TypeScript for frontend"
-  - "Terraform for infrastructure"
+  - "Docker for containerization"
   
 architecture_patterns:
   - "Domain-driven design with feature modules"

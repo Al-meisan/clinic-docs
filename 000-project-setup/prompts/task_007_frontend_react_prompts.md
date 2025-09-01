@@ -418,7 +418,7 @@ Configure Vite build optimizations, bundle analysis, environment configuration, 
 
 **Deployment Considerations:**
 - Environment-specific configuration support
-- Build artifacts ready for CI/CD deployment
+- Build artifacts ready for Docker deployment
 - Bundle size monitoring and optimization
 - Browser compatibility requirements
 
@@ -662,7 +662,7 @@ npx lint-staged
 - Test hooks work in different Git workflows
 - Verify hooks work with various file types
 - Test performance impact of hooks
-- Confirm hooks work in CI/CD environment
+- Confirm hooks work in production environment
 
 ## DOCUMENTATION REQUIREMENTS
 

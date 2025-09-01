@@ -115,7 +115,7 @@ schema_changes:
 
 ```yaml
 dependencies:
-  - dependency: "AWS Cognito User Management"
+  - dependency: "JWT Authentication Service"
     type: "SERVICE"
     status: "AVAILABLE"
 
@@ -397,7 +397,7 @@ tech_stack_references:
   - "TypeScript with NestJS for backend development"
   - "PostgreSQL with TypeORM for data persistence"
   - "class-validator for input validation"
-  - "AWS Cognito for authentication and authorization"
+  - "JWT authentication for authentication and authorization"
 
 architecture_patterns:
   - "Feature-based modular architecture"

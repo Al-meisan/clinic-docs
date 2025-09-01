@@ -7,7 +7,7 @@
 
 **Why:** Critical for ensuring system reliability, preventing regressions, validating complex user workflows, and maintaining quality standards in a healthcare environment where system failures impact patient care.
 
-**Definition of Done:** Complete testing framework operational with automated test suites, test data management, CI/CD integration, and comprehensive coverage of critical user workflows.
+**Definition of Done:** Complete testing framework operational with automated test suites, test data management, and comprehensive coverage of critical user workflows.
 
 ### Scope
 ```yaml
@@ -47,7 +47,7 @@ complexity: "HIGH"
 ```yaml
 performance:
   - requirement: "Test suite execution time"
-    target: "Reasonable CI/CD pipeline execution time"
+    target: "Reasonable test execution time"
     
   - requirement: "Test environment setup time"
     target: "Quick test environment provisioning"
@@ -141,18 +141,15 @@ dependencies:
     type: "DATABASE"
     status: "AVAILABLE"
     
-  - dependency: "CI/CD Pipeline (TASK-015)"
-    type: "INFRASTRUCTURE"
-    status: "AVAILABLE"
     
 provides:
   - deliverable: "Automated Testing Framework"
-    interface: "Test suites executable via CLI and CI/CD"
-    consumers: "Development team, QA engineers, CI/CD pipeline"
+    interface: "Test suites executable via CLI"
+    consumers: "Development team, QA engineers"
     
   - deliverable: "Test Data Management Tools"
     interface: "Scripts and utilities for test data generation"
-    consumers: "QA team, developers, automated testing pipeline"
+    consumers: "QA team, developers"
     
   - deliverable: "Performance Testing Suite"
     interface: "Load testing scripts and performance benchmarks"
@@ -567,7 +564,7 @@ unit_tests:
 integration_tests:
   - focus: "Complete testing framework functionality"
   - test_environment: "Isolated test environment with containerized services"
-  - key_flows: ["test data setup/cleanup", "multi-environment testing", "CI/CD integration"]
+  - key_flows: ["test data setup/cleanup", "multi-environment testing"]
   
 e2e_tests:
   - focus: "Critical user workflows and business processes"
@@ -625,7 +622,7 @@ domain_model:
   - "Appointment scheduling and clinical documentation flows"
   
 integration_points:
-  - "AWS services integration testing with mock environments"
+  - "Cloud services integration testing with mock environments"
   - "External API integration testing with service mocking"
   - "Multi-service communication testing and validation"
 ```
@@ -642,7 +639,7 @@ integration_points:
 ### Technical Acceptance  
 - [ ] Testing framework follows established patterns and best practices
 - [ ] Test suites execute reliably with consistent results
-- [ ] CI/CD integration with automated test execution and reporting
+- [ ] Automated test execution and reporting
 - [ ] Test coverage meets minimum requirements (80% unit, 100% API)
 - [ ] Test execution time within acceptable limits
 

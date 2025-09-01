@@ -2,13 +2,13 @@
 
 # PROMPT 1: JWT Authentication Guard and User Context Injection
 
-**Create a comprehensive JWT authentication guard that validates AWS Cognito tokens, extracts user information, and injects user context into all authenticated requests. The guard must handle token validation, error scenarios, and provide a foundation for authorization.**
+**Create a comprehensive JWT authentication guard that validates JWT tokens, extracts user information, and injects user context into all authenticated requests. The guard must handle token validation, error scenarios, and provide a foundation for authorization.**
 
 ## PROJECT CONTEXT
 
 **Technology Stack:**
 - Backend: TypeScript with NestJS framework
-- Authentication: AWS Cognito JWT token validation  
+- Authentication: JWT token validation with backend authentication
 - Architecture: Domain-driven design with guard pattern for access control
 - Database: PostgreSQL with TypeORM for user entity management
 
@@ -22,7 +22,7 @@
 
 **Authentication Epic Requirements:**
 - OAuth2 scope-based authorization system foundation
-- Integration with AWS Cognito for user management
+- Integration with backend authentication for user management
 - Multi-tenant architecture with clinic boundaries
 - Audit trail for authentication events
 - Required by all business feature modules for access control
@@ -36,13 +36,13 @@ Implement JWT token validation and user context injection as the foundation for 
 - JWT tokens validated on every protected request
 - User context available in request objects throughout the application lifecycle
 - Automatic handling of token expiration and refresh scenarios
-- Integration with existing AWS Cognito service
+- Integration with existing backend authentication service
 - Support for public endpoints that don't require authentication
 
 ## BUSINESS DOMAIN CONTEXT
 
 **Healthcare Authentication Requirements:**
-- Healthcare provider roles require medical license validation through custom Cognito attributes
+- Healthcare provider roles require medical license validation through custom user attributes
 - Multi-language support (Arabic/French) for user profiles  
 - healthcare privacy-compliant user management with audit logging
 - Cross-clinic data access is prohibited unless explicitly authorized
@@ -57,14 +57,14 @@ Implement JWT token validation and user context injection as the foundation for 
 ## FUNCTIONAL REQUIREMENTS
 
 1. **JWT Token Validation**
-   - Validate JWT signature against AWS Cognito public keys
+   - Validate JWT signature against backend authentication public keys
    - Check token expiration and ensure token is not expired
    - Extract user payload including user_id, clinic_id, scopes, and role information
    - Handle malformed or invalid tokens with appropriate error responses
 
 2. **User Context Construction**
-   - Build complete user context object from Cognito token payload and database user record
-   - Include user ID, Cognito ID, email, name, role, scopes, clinic association, and active status
+   - Build complete user context object from JWT token payload and database user record
+   - Include user ID, authentication ID, email, name, role, scopes, clinic association, and active status
    - Inject user context into request object for use by controllers and services
    - Support optional authentication for endpoints marked as public
 
@@ -77,7 +77,7 @@ Implement JWT token validation and user context injection as the foundation for 
 
 1. **Guard Implementation**
    - Create `JwtAuthGuard` implementing NestJS `CanActivate` interface
-   - Use dependency injection for Cognito service and user repository
+   - Use dependency injection for authentication service and user repository
    - Implement proper logging for authentication events and failures
    - Handle edge cases like missing Authorization header gracefully
 
@@ -85,17 +85,17 @@ Implement JWT token validation and user context injection as the foundation for 
    - Extract Bearer token from Authorization header
    - Validate token format and structure before processing
    - Parse token payload and extract required user attributes
-   - Map Cognito user data to internal user context structure
+   - Map authentication user data to internal user context structure
 
 3. **Error Handling**
    - Return 401 Unauthorized for invalid or missing tokens
    - Return appropriate error messages without exposing sensitive information
    - Log authentication failures for security monitoring
-   - Handle network issues with Cognito validation service
+   - Handle network issues with authentication validation service
 
 4. **Performance Requirements**
    - Authentication check must add < 50ms latency to requests
-   - Implement efficient token validation without excessive Cognito API calls
+   - Implement efficient token validation without excessive authentication API calls
    - Cache validation results where appropriate without compromising security
 
 ## TESTING REQUIREMENTS
@@ -108,7 +108,7 @@ Implement JWT token validation and user context injection as the foundation for 
 - Test error handling and appropriate HTTP status codes
 
 **Integration Tests:**
-- Test end-to-end authentication flow with real AWS Cognito tokens
+- Test end-to-end authentication flow with real JWT tokens
 - Test integration with user service for context building
 - Test request flow through authentication guard to protected endpoints
 - Test performance under load with multiple concurrent requests
@@ -128,7 +128,7 @@ Implement JWT token validation and user context injection as the foundation for 
 
 ## VALIDATION CRITERIA
 
-- [ ] JwtAuthGuard successfully validates AWS Cognito JWT tokens
+- [ ] JwtAuthGuard successfully validates backend JWT tokens
 - [ ] User context is properly injected into authenticated requests
 - [ ] Invalid tokens are rejected with appropriate 401 errors
 - [ ] Public endpoints bypass authentication without issues
@@ -148,7 +148,7 @@ Implement JWT token validation and user context injection as the foundation for 
 
 **Authentication Foundation:**
 - JWT Authentication Guard from Prompt 1 provides user context injection
-- User context includes scopes array extracted from Cognito tokens
+- User context includes scopes array extracted from JWT tokens
 - NestJS guard pattern for consistent permission checking across all endpoints
 
 **Authorization Architecture:**
@@ -171,7 +171,7 @@ Create a comprehensive authorization system that enforces permission-based acces
 
 **Dependencies:**
 - Requires JWT Authentication Guard (Prompt 1) for user context
-- Integrates with role definitions from AWS Cognito configuration
+- Integrates with role definitions from backend authentication configuration
 - Builds foundation for endpoint protection across all feature modules
 
 ## BUSINESS DOMAIN CONTEXT
@@ -469,7 +469,7 @@ Create a comprehensive decorator system that simplifies controller implementatio
 
 **User Context Properties:**
 - Basic user information: id, email, firstName, lastName
-- Authentication context: cognitoId, isActive status
+- Authentication context: authId, isActive status
 - Authorization context: role, scopes array
 - Healthcare context: clinicId for multi-tenant operations
 
@@ -723,11 +723,11 @@ Implement a robust audit logging system that captures all security-relevant even
 - Combine all authentication components into unified NestJS module structure
 - Configure global guards and interceptors for application-wide authentication
 - Establish consistent error handling patterns across all authentication scenarios
-- Integrate with existing NestJS application structure and AWS infrastructure
+- Integrate with existing NestJS application structure and backend infrastructure
 
 **Configuration Management:**
 - Environment-specific authentication configuration (development, staging, production)
-- AWS Cognito connection configuration with proper credential management
+- Backend authentication connection configuration with proper credential management
 - Logging configuration for different deployment environments
 - Security configuration for production healthcare deployments
 
@@ -773,7 +773,7 @@ Create a complete, production-ready authentication system that integrates all co
    - Integrate with main application module structure
 
 2. **Global Configuration Management**
-   - Environment-based configuration for AWS Cognito connection parameters
+   - Environment-based configuration for backend authentication connection parameters
    - Authentication behavior configuration (token expiration, refresh policies)
    - Audit logging configuration for different deployment environments  
    - Error handling configuration and customization options
@@ -794,7 +794,7 @@ Create a complete, production-ready authentication system that integrates all co
 
 1. **AuthModule Implementation**
    - Create comprehensive NestJS module with all authentication providers
-   - Configure module imports for AWS services and database connections
+   - Configure module imports for backend services and database connections
    - Export guards, decorators, and services for use across application
    - Implement proper dependency injection configuration
 
@@ -813,12 +813,12 @@ Create a complete, production-ready authentication system that integrates all co
 4. **Error Handling and Resilience**
    - Create global exception filter for authentication and authorization errors
    - Implement retry policies for transient authentication service failures
-   - Configure circuit breaker patterns for AWS Cognito service integration
+   - Configure circuit breaker patterns for authentication service integration
    - Establish error recovery procedures for authentication system failures
 
 5. **Performance Optimization**
    - Implement caching strategies for token validation and user context
-   - Configure connection pooling for AWS Cognito service requests
+   - Configure connection pooling for authentication service requests
    - Optimize guard execution order to minimize authentication overhead
    - Implement performance monitoring and alerting for authentication operations
 

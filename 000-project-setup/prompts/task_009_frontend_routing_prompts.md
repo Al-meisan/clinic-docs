@@ -104,7 +104,7 @@
 
 ## EPIC CONTEXT
 **EPIC-000 Project Setup:**
-- Authentication foundation ready with AWS Cognito integration planned
+- Authentication foundation ready with backend authentication integration planned
 - Role-based access control critical for healthcare data security
 - Protected routes block all feature development until implemented
 

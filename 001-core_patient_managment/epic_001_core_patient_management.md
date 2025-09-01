@@ -246,7 +246,7 @@ rules:
 dependencies:
   - epic: "Infrastructure Setup"
     dependency_type: "HARD"
-    what_we_need: "AWS infrastructure, database, authentication system, i18n framework"
+    what_we_need: "Cloud infrastructure, database, authentication system, i18n framework"
     
   - epic: "EPIC-002 (Appointment Scheduling)"
     dependency_type: "SOFT"
@@ -282,7 +282,7 @@ provided_apis:
 
 ```yaml
 consumed_apis:
-  - source: "AWS Cognito"
+  - source: "JWT Authentication Service"
     endpoints: "User authentication and authorization endpoints"
     purpose: "User authentication and scope-based access control"
 ```
@@ -336,7 +336,7 @@ performance:
 ```yaml
 security:
   - consideration: "Patient data security and protection"
-    implementation: "AWS RDS security, HTTPS for all API calls"
+    implementation: "Database security, HTTPS for all API calls"
     validation: "Security audit and penetration testing"
     
   - consideration: "Role-based access control for patient information"

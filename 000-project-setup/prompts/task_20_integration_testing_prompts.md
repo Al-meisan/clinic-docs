@@ -10,7 +10,7 @@ Implement the foundational end-to-end testing framework using Playwright with Ty
 - Frontend: React with TypeScript and shadcn/ui components
 - Backend: NestJS with TypeScript
 - Database: PostgreSQL with TypeORM
-- Authentication: AWS Cognito integration
+- Authentication: JWT authentication with backend integration
 - Build System: Vite for frontend, standard NestJS for backend
 
 **Project Structure:**
@@ -31,7 +31,7 @@ This is part of the Project Setup Epic focusing on establishing development infr
 - Backend API Implementation (TASK-003)
 - Frontend Application (TASK-007) 
 - Database Infrastructure (TASK-004)
-- CI/CD Pipeline (TASK-015)
+- Automated Testing Framework (TASK-015)
 
 ## BUSINESS DOMAIN CONTEXT
 
@@ -80,7 +80,7 @@ This is part of the Project Setup Epic focusing on establishing development infr
 
 **Compatibility:**
 - Support for headless and headed browser modes
-- CI/CD pipeline integration ready
+- Automated testing framework integration ready
 - Local development environment support
 
 ## TESTING REQUIREMENTS
@@ -109,7 +109,7 @@ This is part of the Project Setup Epic focusing on establishing development infr
 - [ ] Page object pattern established for main application areas
 - [ ] Test structure organized by feature modules
 - [ ] Sample smoke tests passing for critical workflows
-- [ ] Configuration supports local development and CI/CD environments
+- [ ] Configuration supports local development and testing environments
 - [ ] Documentation covers setup and test writing guidelines
 
 ---
@@ -134,7 +134,7 @@ Implement comprehensive test data management system using factory pattern for en
 
 ## EPIC CONTEXT
 
-Building robust testing infrastructure that supports reliable, repeatable test execution across development, staging, and CI/CD environments while maintaining data privacy and security standards.
+Building robust testing infrastructure that supports reliable, repeatable test execution across development and staging environments while maintaining data privacy and security standards.
 
 ## TASK CONTEXT
 
@@ -244,7 +244,7 @@ Implement comprehensive API integration testing using Supertest with NestJS, cov
 **Backend Architecture:**
 - NestJS application with modular feature structure
 - RESTful API endpoints following standardized URL patterns
-- JWT authentication with AWS Cognito integration
+- JWT authentication with backend integration
 - Role-based access control with OAuth2 scopes
 - Global exception filters and validation pipes
 
@@ -364,27 +364,26 @@ Ensuring comprehensive backend service quality through automated API testing tha
 - [ ] Error scenarios covered with proper response validation
 - [ ] Performance benchmarks established and validated
 - [ ] Security controls tested and verified
-- [ ] Test suites integrated with CI/CD pipeline
+- [ ] Test suites integrated with automated testing framework
 - [ ] Documentation provides clear testing guidelines
 
 ---
 
 # PROMPT 4: Multi-Environment Testing Configuration System
 
-Implement multi-environment testing configuration supporting development, staging, and production-like environments with environment-specific settings, CI/CD integration, and automated environment provisioning.
+Implement multi-environment testing configuration supporting development, staging, and production-like environments with environment-specific settings, automated testing integration, and environment provisioning.
 
 ## PROJECT CONTEXT
 
 **Infrastructure Requirements:**
 - Docker containerization for consistent environments
-- AWS services integration (Cognito, RDS, S3)
+- Backend services integration
 - Environment-specific configuration management
-- CI/CD pipeline with GitHub Actions
-- Terraform infrastructure as code
+- Automated testing framework with Docker containers
 
 **Application Configuration:**
 - Environment-specific API endpoints and database connections
-- AWS service configurations per environment
+- Backend service configurations per environment
 - Authentication and authorization settings
 - Logging and monitoring configurations
 
@@ -394,10 +393,10 @@ Establishing reliable testing infrastructure that ensures consistent test execut
 
 ## TASK CONTEXT
 
-**Implementation Focus:** Environment-specific test configuration, Docker containerization for test environments, CI/CD integration, and automated provisioning to support reliable testing across development lifecycle.
+**Implementation Focus:** Environment-specific test configuration, Docker containerization for test environments, automated testing integration, and provisioning to support reliable testing across development lifecycle.
 
 **Integration Points:**
-- CI/CD pipeline for automated test execution
+- Automated testing framework for test execution
 - Docker containers for environment isolation
 - Environment configuration management
 - Test reporting and monitoring systems
@@ -430,7 +429,7 @@ Establishing reliable testing infrastructure that ensures consistent test execut
    - Volume management for persistent data and logs
    - Network configuration for service communication
 
-3. **CI/CD Pipeline Integration**
+3. **Automated Testing Framework Integration**
    - Automated test execution on code changes
    - Environment provisioning and teardown
    - Test result reporting and notification
@@ -456,8 +455,8 @@ Establishing reliable testing infrastructure that ensures consistent test execut
 - Service availability monitoring
 - Database connectivity and migration validation
 
-**CI/CD Integration:**
-- GitHub Actions workflow configuration
+**Testing Automation:**
+- Docker testing environment configuration
 - Test execution parallelization
 - Artifact management and storage
 - Environment-specific deployment strategies
@@ -470,7 +469,7 @@ Establishing reliable testing infrastructure that ensures consistent test execut
 - Performance baseline establishment per environment
 - Security configuration validation
 
-**CI/CD Testing:**
+**Automated Testing:**
 - Pipeline execution validation
 - Test result collection and reporting
 - Failure notification and rollback testing
@@ -480,14 +479,14 @@ Establishing reliable testing infrastructure that ensures consistent test execut
 
 - Environment setup and configuration guide
 - Docker containerization documentation
-- CI/CD pipeline configuration and usage
+- Testing automation configuration and usage
 - Troubleshooting guide for environment issues
 
 ## VALIDATION CRITERIA
 
 - [ ] Multi-environment configuration system operational
 - [ ] Docker containers configured for all environments
-- [ ] CI/CD pipeline integrated with automated test execution
+- [ ] Testing framework integrated with automated test execution
 - [ ] Environment provisioning and cleanup automated
 - [ ] Configuration management system handles secrets securely
 - [ ] Performance baselines established per environment
@@ -505,7 +504,7 @@ Implement comprehensive performance testing framework using automated load testi
 **System Architecture:**
 - NestJS backend with TypeORM and PostgreSQL database
 - React frontend with client-side routing and state management
-- AWS infrastructure with managed services
+- Backend infrastructure with managed services
 - Multi-user concurrent access patterns
 - Real-time features for appointment scheduling and clinical workflows
 
@@ -567,7 +566,7 @@ Establishing performance quality gates and monitoring to ensure the healthcare s
    - Automated performance report generation
    - Historical performance trend analysis
    - Performance regression detection
-   - CI/CD integration with performance gates
+   - Testing automation with performance gates
 
 ## TECHNICAL REQUIREMENTS
 
@@ -584,7 +583,7 @@ Establishing performance quality gates and monitoring to ensure the healthcare s
 - Memory usage and garbage collection monitoring
 
 **Integration Requirements:**
-- CI/CD pipeline integration with performance gates
+- Testing automation integration with performance gates
 - Performance monitoring integration with CloudWatch
 - Test result storage and historical analysis
 - Alert configuration for performance degradation
@@ -616,7 +615,7 @@ Establishing performance quality gates and monitoring to ensure the healthcare s
 - [ ] Performance monitoring system collecting comprehensive metrics
 - [ ] Test scenarios cover all critical user workflows
 - [ ] Performance benchmarks established and documented
-- [ ] CI/CD integration with performance quality gates
+- [ ] Testing automation integration with performance quality gates
 - [ ] Automated reporting and alert system functional
 - [ ] Performance optimization recommendations documented
 - [ ] Framework supports different load patterns and stress scenarios

@@ -804,7 +804,7 @@ describe('Multi-tenant Data Isolation', () => {
 - Coordinate with NestJS application setup (TASK-003)
 - Ensure compatibility with authentication system requirements
 - Plan for frontend integration points
-- Consider CI/CD pipeline integration for migration automation
+- Consider automated deployment scripts for migration automation
 
 ### Quality Assurance
 
