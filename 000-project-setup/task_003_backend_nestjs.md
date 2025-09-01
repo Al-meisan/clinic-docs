@@ -3,7 +3,7 @@
 ## Task Overview
 
 ### Goal
-**What to Build:** Initialize a complete NestJS backend application with TypeScript, TypeORM database integration, AWS service connections, and foundational architecture following domain-driven design principles.
+**What to Build:** Initialize a complete NestJS backend application with TypeScript, TypeORM database integration, cloud service connections, and foundational architecture following domain-driven design principles.
 
 **Why:** Creates the core backend foundation that will handle all API endpoints, business logic, and data management for the MedFlow healthcare management system.
 
@@ -28,9 +28,9 @@ complexity: "HIGH"
    - Acceptance Criteria: Database connection established, migrations work, and basic CRUD operations functional
    - Priority: HIGH
 
-3. **AWS Service Integration Setup**
-   - Description: AWS SDK integration for Cognito, S3 with proper configuration management
-   - Acceptance Criteria: AWS services can be accessed with proper credentials and error handling
+3. **Cloud Service Integration Setup**
+   - Description: Cloud SDK integration for file storage service with proper configuration management
+   - Acceptance Criteria: Cloud services can be accessed with proper credentials and error handling
    - Priority: MEDIUM
 
 4. **Authentication and Authorization Framework**
@@ -96,11 +96,11 @@ dependencies:
     type: "DATABASE"
     status: "PLANNED"
     
-  - dependency: "AWS account and credentials"
+  - dependency: "Cloud service credentials"
     type: "SERVICE"
     status: "AVAILABLE"
     
-  - dependency: "Terraform infrastructure"
+  - dependency: "Deployment configuration"
     type: "INFRASTRUCTURE"
     status: "IN_PROGRESS"
     
@@ -239,7 +239,7 @@ edge_cases:
 tech_stack_references:
   - "NestJS with TypeScript for backend development"
   - "TypeORM for database operations"
-  - "AWS SDK for cloud service integration"
+  - "Cloud SDK for service integration"
   - "PostgreSQL as primary database"
   
 architecture_patterns:
@@ -280,7 +280,7 @@ integration_points:
 ### Technical Acceptance  
 - [ ] Code follows NestJS and TypeScript best practices
 - [ ] Database migrations can run forward and backward
-- [ ] AWS SDK integration configured (without credentials for security)
+- [ ] Cloud SDK integration configured (without credentials for security)
 - [ ] OpenAPI documentation generated and accessible
 - [ ] Error handling and logging properly implemented
 

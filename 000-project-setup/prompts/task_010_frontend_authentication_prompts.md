@@ -2,13 +2,13 @@
 
 # PROMPT 1: Authentication Types and Interfaces Setup
 
-Create comprehensive TypeScript type definitions for the authentication system including user interfaces, authentication states, AWS Cognito payloads, and all related types needed for the MedFlow healthcare management application.
+Create comprehensive TypeScript type definitions for the authentication system including user interfaces, authentication states, JWT payloads, and all related types needed for the MedFlow healthcare management application.
 
 ## PROJECT CONTEXT
 
 **Tech Stack:**
 - Frontend: React with TypeScript
-- Authentication: AWS Cognito
+- Authentication: JWT authentication with backend
 - State Management: Zustand with React Context
 - Architecture: Domain-driven design with feature-based folder structure
 
@@ -16,7 +16,7 @@ Create comprehensive TypeScript type definitions for the authentication system i
 - React application is set up with TypeScript support
 - Routing system is available  
 - UI framework (shadcn/ui) is integrated
-- AWS Cognito user pool will be configured
+- Backend authentication system will be configured
 
 ## EPIC CONTEXT
 
@@ -28,7 +28,7 @@ This task is part of the Project Setup Epic focusing on establishing foundationa
 
 ## TASK CONTEXT
 
-**Goal:** Define all TypeScript interfaces and types needed for authentication system including user management, token handling, and AWS Cognito integration.
+**Goal:** Define all TypeScript interfaces and types needed for authentication system including user management, token handling, and backend authentication integration.
 
 **Scope:** Create type definitions that will be used across authentication context, hooks, services, and UI components.
 
@@ -53,7 +53,7 @@ This task is part of the Project Setup Epic focusing on establishing foundationa
 - Generic types where appropriate for reusability
 
 **Integration Requirements:**
-- Compatibility with AWS Cognito user attributes structure
+- Compatibility with backend authentication user attributes structure
 - Support for JWT token structure and claims
 - Integration with React Context and custom hooks patterns
 
@@ -61,14 +61,14 @@ This task is part of the Project Setup Epic focusing on establishing foundationa
 
 **Type Validation:**
 - TypeScript compilation without errors
-- Type compatibility with AWS Cognito SDK
+- Type compatibility with backend authentication SDK
 - Proper generic constraints and utility types
 
 ## VALIDATION CRITERIA
 
 - [ ] User interface includes all required healthcare-specific attributes
 - [ ] Authentication state interface covers all possible auth states
-- [ ] AWS Cognito payload interface matches expected JWT structure
+- [ ] JWT payload interface matches expected authentication structure
 - [ ] User role enum includes all standardized healthcare roles
 - [ ] OAuth2 scopes follow healthcare workflow patterns
 - [ ] User preferences interface supports multi-language requirements
@@ -77,26 +77,26 @@ This task is part of the Project Setup Epic focusing on establishing foundationa
 
 ---
 
-# PROMPT 2: AWS Cognito Service Integration Layer
+# PROMPT 2: Authentication Service Integration Layer
 
-Implement the service layer for AWS Cognito integration including authentication operations, token management, and user profile handling with proper error handling and TypeScript support.
+Implement the service layer for backend authentication integration including authentication operations, token management, and user profile handling with proper error handling and TypeScript support.
 
 ## PROJECT CONTEXT
 
 **Tech Stack:**
-- AWS Cognito for user authentication and management
+- Backend authentication for user authentication and management
 - TypeScript with strict type checking
 - React application with modern hooks pattern
 - Healthcare domain with specific security requirements
 
 **Dependencies:**
 - Authentication types from Prompt 1 are implemented
-- AWS Cognito user pool is configured
-- AWS SDK or AWS Amplify libraries are available
+- Backend authentication system is configured
+- Authentication SDK or libraries are available
 
 ## EPIC CONTEXT
 
-Core authentication infrastructure requiring robust Cognito integration for:
+Core authentication infrastructure requiring robust backend authentication integration for:
 - Secure user authentication in healthcare environment
 - Token lifecycle management with automatic refresh
 - Healthcare-specific user attribute handling
@@ -104,7 +104,7 @@ Core authentication infrastructure requiring robust Cognito integration for:
 
 ## TASK CONTEXT
 
-**Goal:** Create a comprehensive service layer that handles all AWS Cognito operations including login, logout, token refresh, and user profile management.
+**Goal:** Create a comprehensive service layer that handles all backend authentication operations including login, logout, token refresh, and user profile management.
 
 **Scope:** Service class with methods for all authentication operations, proper error handling, and integration with healthcare-specific user attributes.
 
@@ -117,7 +117,7 @@ Core authentication infrastructure requiring robust Cognito integration for:
 - Clinic association validation for multi-tenant access control
 
 **User Attribute Management:**
-- Custom Cognito attributes for medical license information
+- Custom authentication attributes for medical license information
 - Role-based attribute retrieval and validation
 - Clinic association and specialty information
 - User preference management (language, timezone, workflow settings)
@@ -133,11 +133,11 @@ Core authentication infrastructure requiring robust Cognito integration for:
 2. **Token Management**
    - JWT token parsing and validation
    - Automatic token refresh before expiration
-   - Secure token storage with encryption considerations
+   - Secure token storage with secure storage considerations
    - Token cleanup on logout
 
 3. **User Profile Management**
-   - User attribute retrieval from Cognito
+   - User attribute retrieval from backend authentication
    - Healthcare-specific custom attribute handling
    - User preference synchronization
    - Profile update operations
@@ -145,7 +145,7 @@ Core authentication infrastructure requiring robust Cognito integration for:
 ## TECHNICAL REQUIREMENTS
 
 **Error Handling:**
-- Comprehensive error types for all Cognito operations
+- Comprehensive error types for all authentication operations
 - User-friendly error messages without exposing system details
 - Network error handling with retry logic
 - Authentication failure scenarios
@@ -158,7 +158,7 @@ Core authentication infrastructure requiring robust Cognito integration for:
 
 **Security:**
 - Secure credential handling
-- Token encryption for storage
+- Token secure storage for storage
 - Proper cleanup of sensitive data
 - OWASP security best practices
 
@@ -171,13 +171,13 @@ Core authentication infrastructure requiring robust Cognito integration for:
 - User profile operations
 
 **Integration Tests:**
-- Mock Cognito service integration
+- Mock authentication service integration
 - Token refresh workflow testing
 - Complete authentication flow validation
 
 ## VALIDATION CRITERIA
 
-- [ ] CognitoAuth class implements all required authentication methods
+- [ ] AuthService class implements all required authentication methods
 - [ ] Token management includes automatic refresh before expiration
 - [ ] Error handling provides user-friendly messages for all scenarios
 - [ ] User profile operations handle healthcare-specific attributes
@@ -191,7 +191,7 @@ Core authentication infrastructure requiring robust Cognito integration for:
 
 # PROMPT 3: Authentication Context Provider Implementation
 
-Create the React Context provider for global authentication state management including user state, authentication status, and auth operations with proper integration with the Cognito service layer.
+Create the React Context provider for global authentication state management including user state, authentication status, and auth operations with proper integration with the authentication service layer.
 
 ## PROJECT CONTEXT
 
@@ -203,7 +203,7 @@ Create the React Context provider for global authentication state management inc
 
 **Dependencies:**
 - Authentication types from Prompt 1
-- AWS Cognito service from Prompt 2
+- Authentication service from Prompt 2
 - React application with routing system available
 
 ## EPIC CONTEXT
@@ -268,7 +268,7 @@ Authentication context serves as the foundation for all authenticated features i
 - Optimized context provider hierarchy
 
 **Integration:**
-- Seamless integration with Cognito service layer
+- Seamless integration with authentication service layer
 - Token refresh integration with automatic user session extension
 - Error boundary compatibility
 - Router integration for redirect handling
@@ -282,7 +282,7 @@ Authentication context serves as the foundation for all authenticated features i
 - Error state management
 
 **Integration Tests:**
-- Complete authentication flow with service integration
+- Complete authentication flow with authentication service integration
 - Token refresh scenario testing
 - Session persistence testing
 - Error recovery scenarios
@@ -290,7 +290,7 @@ Authentication context serves as the foundation for all authenticated features i
 ## VALIDATION CRITERIA
 
 - [ ] AuthProvider manages all authentication state correctly
-- [ ] Authentication operations integrate with Cognito service layer
+- [ ] Authentication operations integrate with authentication service layer
 - [ ] Context provides user, authentication status, and operations
 - [ ] Loading states properly managed during async operations
 - [ ] Error handling provides clear feedback for authentication failures
@@ -689,7 +689,7 @@ Implement comprehensive JWT token management including secure storage, automatic
 
 **Dependencies:**
 - Authentication types from Prompt 1
-- AWS Cognito service from Prompt 2
+- Authentication service from Prompt 2
 - React application with authentication context
 
 ## EPIC CONTEXT
@@ -769,7 +769,7 @@ Token management is critical for healthcare application security, providing:
 - Security cleanup operations
 
 **Integration Tests:**
-- Token refresh workflow with Cognito service
+- Token refresh workflow with authentication service
 - API request integration with token attachment
 - Cross-tab session synchronization testing
 - Error recovery scenarios

@@ -50,7 +50,7 @@
 frontend: "React with TypeScript"
 backend: "TypeScript with NestJS"
 ui_components: "shadcn/ui"
-infrastructure: "AWS (cost-effective approach) with Terraform for IaC"
+infrastructure: "Self-hosted or cloud-agnostic deployment"
 database: "PostgreSQL 15+ with TypeORM migrations"
 architecture: "Domain-driven design with feature modules"
 ```
@@ -61,17 +61,17 @@ state_management: "Zustand + TanStack Query (React-Query)"
 styling: "Tailwind CSS + shadcn/ui components"
 testing: "Jest + React Testing Library + Cypress"
 build_tools: "Vite + ESBuild"
-user_management: "AWS Cognito + database user profiles"
-authentication: "AWS Cognito with OAuth2 scope-based authorization + JWT"
+user_management: "Database user profiles with role-based access"
+authentication: "JWT-based authentication with OAuth2 scope-based authorization"
 api_documentation: "OpenAPI 3.0 + Swagger UI"
-infrastructure: "Terraform for Infrastructure as Code"
-monitoring: "AWS CloudWatch + custom metrics"
+infrastructure: "Docker containers for deployment"
+monitoring: "Application metrics and health checks"
 database_orm: "TypeORM with migration scripts"
 validation: "class-validator + class-transformer"
 internationalization: "react-i18next + i18next"
-deployment: "AWS ECS + RDS + ElastiCache + S3 + Cognito"
-email_service: "AWS SES"
-file_storage: "AWS S3 with CloudFront CDN"
+deployment: "Docker containers with PostgreSQL database"
+email_service: "SMTP service integration"
+file_storage: "Local storage or cloud-agnostic file service"
 ```
 
 ## Architecture Patterns
@@ -108,7 +108,7 @@ backend_directory_structure: |
   │       └── index.ts
   ├── config/                    # Configuration files
   │   ├── app.config.ts          # App-level config
-  │   ├── auth.config.ts         # AWS Cognito configuration
+  │   ├── auth.config.ts         # Authentication configuration
   │   ├── database.config.ts     # DB connection options
   │   └── index.ts
   ├── features/                  # Feature modules
@@ -146,13 +146,13 @@ backend_directory_structure: |
       │   ├── database.module.ts
       │   ├── migrations/
       │   └── seeds/
-      ├── aws/                   # AWS service integrations
-      │   ├── cognito/
-      │   │   ├── cognito.service.ts
-      │   │   └── cognito.module.ts
-      │   ├── s3/
-      │   │   ├── s3.service.ts
-      │   │   └── s3.module.ts
+      ├── services/              # External service integrations
+      │   ├── auth/
+      │   │   ├── auth.service.ts
+      │   │   └── auth.module.ts
+      │   ├── storage/
+      │   │   ├── storage.service.ts
+      │   │   └── storage.module.ts
       └── external-apis/         # Third-party integrations
           ├── payment-gateways/
           └── sms-service/
@@ -199,21 +199,21 @@ frontend_directory_structure: |
   │   ├── app.config.ts          # Application settings
   │   ├── routes.config.ts       # Route definitions
   │   ├── api.config.ts          # API configuration
-  │   └── cognito.config.ts      # AWS Cognito client config
+  │   └── auth.config.ts         # Authentication client config
   ├── hooks/                     # Shared custom hooks
   │   ├── useClickOutside.ts
   │   ├── useLocalStorage.ts
   │   ├── useMediaQuery.ts
-  │   ├── useAuth.ts             # Cognito authentication hook
+  │   ├── useAuth.ts             # Authentication hook
   │   └── index.ts
   ├── lib/                       # Core utilities and services
   │   ├── api/                   # API client setup
-  │   │   ├── client.ts          # Base API client with Cognito integration
+  │   │   ├── client.ts          # Base API client with authentication
   │   │   ├── interceptors.ts    # Request/response interceptors
   │   │   ├── error-handling.ts  # Error handling utilities
   │   │   └── index.ts
   │   ├── auth/                  # Authentication utilities
-  │   │   ├── cognito.ts         # AWS Cognito service
+  │   │   ├── auth.ts            # Authentication service
   │   │   ├── tokens.ts          # JWT token handling
   │   │   └── index.ts
   │   ├── store.ts               # Global Zustand store
@@ -225,7 +225,7 @@ frontend_directory_structure: |
   │       └── index.ts
   ├── providers/                 # Context providers
   │   ├── AppProvider.tsx        # Root provider
-  │   ├── AuthProvider.tsx       # Cognito auth provider
+  │   ├── AuthProvider.tsx       # Authentication provider
   │   ├── ThemeProvider.tsx      # Theme context provider
   │   ├── QueryProvider.tsx      # TanStack Query provider
   │   └── index.ts
@@ -279,54 +279,23 @@ frontend_directory_structure: |
   ├── main.tsx                   # Application entry point
   └── index.css                  # Entry CSS file
 
-infrastructure_structure: |
-  infra/
-  ├── environments/
+deployment_structure: |
+  deployment/
+  ├── docker/
+  │   ├── backend.Dockerfile
+  │   ├── frontend.Dockerfile
+  │   └── docker-compose.yml
+  ├── config/
   │   ├── dev/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── terraform.tfvars
+  │   │   └── config.yml
   │   ├── staging/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── terraform.tfvars
-  │   └── prod/
-  │       ├── main.tf
-  │       ├── variables.tf
-  │       └── terraform.tfvars
-  ├── modules/
-  │   ├── vpc/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── outputs.tf
-  │   ├── rds/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── outputs.tf
-  │   ├── ecs/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── outputs.tf
-  │   ├── cognito/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── outputs.tf
-  │   ├── s3/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── outputs.tf
-  │   ├── cloudwatch/
-  │   │   ├── main.tf
-  │   │   ├── variables.tf
-  │   │   └── outputs.tf
-  │   └── elasticache/
-  │       ├── main.tf
-  │       ├── variables.tf
-  │       └── outputs.tf
+  │   │   └── config.yml
+  │   └── production/
+  │       └── config.yml
   ├── scripts/
   │   ├── deploy.sh
-  │   ├── destroy.sh
-  │   └── backup.sh
+  │   ├── backup.sh
+  │   └── restore.sh
   └── README.md
 ```
 
@@ -410,17 +379,17 @@ performance_optimization:
 
 ### Integration Architecture
 
-#### AWS Cognito Integration
+#### Authentication & Authorization
 ```yaml
 authentication_flow:
-  - "AWS Cognito User Pools for user management"
+  - "Database-based user management with secure password hashing"
   - "Custom attributes for medical licenses and specialties"
   - "User groups for role-based access (doctor, admin, staff)"
   - "JWT tokens with custom claims for scopes"
   - "Automatic token refresh handling"
 
 authorization_strategy:
-  - "Scope-based authorization using Cognito custom attributes"
+  - "Scope-based authorization using JWT claims"
   - "Backend guards validate scopes for each endpoint"
   - "Frontend route guards based on user permissions"
   - "Role inheritance following standardized hierarchy"
@@ -458,10 +427,10 @@ git_commits: "<type>(<scope>): <short summary>"
   - Performance testing with React DevTools Profiler
 
 - **Performance:** 
-  - Page load < 3s
-  - API response < 500ms for most endpoints
-  - Database queries > 100ms logged and optimized
-  - 99% system uptime
+  - Optimal page loading
+  - Fast API responses
+  - Efficient database queries
+  - High system availability
   - Lazy loading for non-critical features
 
 - **Accessibility:** 
@@ -473,9 +442,8 @@ git_commits: "<type>(<scope>): <short summary>"
   - RTL layout support for Arabic
 
 - **Security:** 
-  - Algerian healthcare data protection regulations compliance
   - GDPR compliance for data protection
-  - Data encryption at rest and in transit
+  - Secure data handling and protection
   - OAuth2 scope-based authorization
   - Input validation and sanitization
   - Regular security audits and dependency updates
@@ -596,11 +564,9 @@ entities:
     - middleName: string (optional)
     - dateOfBirth: Date
     - gender: Gender
-    - ssn: string (last 4 digits only)
     - status: PatientStatus
     - contactInfo: ContactInfo
     - emergencyContacts: EmergencyContact[]
-    - insurance: InsuranceInfo
     - medicalHistory: MedicalHistory
     - preferredLanguage: string (ar/fr)
     - preferredContactMethod: ContactMethod
@@ -669,7 +635,7 @@ entities:
     
   User:
     - id: UUID
-    - cognitoId: string (AWS Cognito user ID)
+    - authId: string (Authentication system user ID)
     - email: string
     - firstName: string
     - lastName: string
@@ -796,8 +762,6 @@ entities:
     - medicalLicense: string
     - licenseState: string
     - licenseExpiration: Date
-    - npiNumber: string
-    - boardCertifications: string[]
     - specialtyLicenses: string[]
     
   ProviderSchedule:
@@ -965,7 +929,6 @@ entities:
     - amount: number
     - currency: string (DZD)
     - services: BillItem[]
-    - insurance: InsuranceClaim (optional)
     - status: BillStatus
     - dueDate: Date
     - paidDate: Date (optional)
@@ -993,27 +956,6 @@ entities:
     - processedAt: DateTime (optional)
     - notes: string (optional)
     - createdAt: DateTime
-    
-  InsuranceInfo:
-    - provider: string
-    - policyNumber: string
-    - groupNumber: string (optional)
-    - subscriberId: string
-    - subscriberName: string
-    - copayAmount: number (optional)
-    - deductible: number (optional)
-    - isActive: boolean
-    - expirationDate: Date (optional)
-    
-  InsuranceClaim:
-    - id: UUID
-    - billId: UUID
-    - claimNumber: string
-    - submittedDate: Date
-    - status: ClaimStatus
-    - approvedAmount: number (optional)
-    - paidAmount: number (optional)
-    - denialReason: string (optional)
 
   # Waiting List & Scheduling
   WaitingListEntry:
@@ -1344,16 +1286,7 @@ enums:
     - card
     - bank_transfer
     - check
-    - insurance
     - installment
-    
-  ClaimStatus:
-    - submitted
-    - pending
-    - approved
-    - denied
-    - partial_approval
-    - resubmitted
     
   # Clinic & System Enums
   ClinicMode:
@@ -1421,22 +1354,18 @@ external_services:
     auth: "Account SID and Auth Token"
     docs: "https://www.twilio.com/docs"
     
-  - service: "AWS S3"
+  - service: "File Storage"
     purpose: "Document storage and patient file management"
-    auth: "IAM roles and policies"
-    docs: "https://docs.aws.amazon.com/s3/"
+    auth: "Application-level access control"
+    docs: "Implementation-specific documentation"
     
-  - service: "Algeria Health Ministry APIs (Future)"
-    purpose: "Integration with national health systems"
-    auth: "Government-issued credentials"
-    docs: "Ministry of Health API specifications"
 ```
 
 ### Internal Services
 ```yaml
 internal_apis:
   - service: "User Management Service"
-    responsibility: "User profile management, role assignment, Cognito integration"
+    responsibility: "User profile management, role assignment, authentication integration"
     endpoints: "/users, /users/{id}/profile, /users/{id}/roles"
     
   - service: "Patient Service"

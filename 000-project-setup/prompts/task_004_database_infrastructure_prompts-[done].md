@@ -10,7 +10,7 @@ healthcare application.
 ### Context
 
 - **Tech Stack**: PostgreSQL 15+, NestJS backend with TypeORM
-- **Architecture**: Healthcare data requiring encryption, audit trails, and multi-tenant isolation
+- **Architecture**: Healthcare data requiring secure storage, audit trails, and multi-tenant isolation
 - **Environment**: Development and production database configuration needed
 - **Security Requirements**: Encrypted connections, role-based access, audit logging
 
@@ -29,7 +29,7 @@ healthcare application.
 
 3. **User and Security Configuration**
     - Create dedicated database user `medflow` with appropriate permissions
-    - Configure SSL/TLS encryption for connections
+    - Configure secure connections
     - Set up role-based access control for different application components
 
 ### Success Criteria
@@ -276,7 +276,7 @@ and indexes optimized for healthcare data operations.
 - **Domain**: Healthcare clinic management system
 - **Entities**: Users (staff, providers), Clinics (multi-tenant), AuditLog (compliance)
 - **Requirements**: Multi-tenant data isolation, role-based access, comprehensive audit trails
-- **Standards**: HIPAA compliance considerations, referential integrity
+- **Standards**: Healthcare privacy compliance considerations, referential integrity
 
 ### Detailed Requirements
 
@@ -527,7 +527,7 @@ maintains referential integrity and provides consistent test scenarios.
 - **Purpose**: Development environment setup, integration testing, demonstration data
 - **Data Types**: Users, clinics, sample patient records (anonymized), appointments
 - **Requirements**: Referentially consistent, easily resetable, environment-specific
-- **Compliance**: No real patient data, HIPAA-compliant synthetic data
+- **Compliance**: No real patient data, healthcare privacy-compliant synthetic data
 
 ### Detailed Requirements
 
@@ -788,7 +788,7 @@ describe('Multi-tenant Data Isolation', () => {
   
   - Configure connection pooling with proper timeouts
   - Enable required PostgreSQL extensions
-  - Set up SSL encryption for secure connections
+  - Set up secure database connections
   - Add environment-specific database configurations
   ```
 
@@ -804,7 +804,7 @@ describe('Multi-tenant Data Isolation', () => {
 - Coordinate with NestJS application setup (TASK-003)
 - Ensure compatibility with authentication system requirements
 - Plan for frontend integration points
-- Consider CI/CD pipeline integration for migration automation
+- Consider automated deployment scripts for migration automation
 
 ### Quality Assurance
 

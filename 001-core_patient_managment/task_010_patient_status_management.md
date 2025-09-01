@@ -3,11 +3,15 @@
 ## Task Overview
 
 ### Goal
-**What to Build:** Comprehensive patient status management system with workflow validation, automated status transitions, and audit trail to ensure proper patient lifecycle management according to business rules.
 
-**Why:** Maintain accurate patient status information for billing, scheduling, and clinical operations while ensuring compliance with healthcare regulations and clinic operational requirements.
+**What to Build:** Comprehensive patient status management system with workflow validation, automated status
+transitions, and audit trail to ensure proper patient lifecycle management according to business rules.
 
-**Definition of Done:** 
+**Why:** Maintain accurate patient status information for billing, scheduling, and clinical operations while ensuring
+compliance with healthcare regulations and clinic operational requirements.
+
+**Definition of Done:**
+
 - Patient status workflow with validated transitions (active ↔ inactive, active → deceased, active → merged)
 - Automated status management with business rule enforcement
 - Status change audit trail with user attribution and reasons
@@ -15,6 +19,7 @@
 - Bulk status management for administrative operations
 
 ### Scope
+
 ```yaml
 task_type: "FULLSTACK"
 complexity: "MEDIUM"
@@ -23,67 +28,62 @@ complexity: "MEDIUM"
 ## Requirements
 
 ### Functional Requirements
+
 1. **Status Transition Workflow**
-   - Description: Implement valid patient status transitions with business rule enforcement
-   - Acceptance Criteria: 
-     - Valid transitions: active ↔ inactive, active → deceased, active → merged
-     - Invalid transitions blocked with clear error messages
-     - Reason required for all status changes
-     - Authorization checks for sensitive status changes (deceased, merged)
-   - Priority: HIGH
+    - Description: Implement valid patient status transitions with business rule enforcement
+    - Acceptance Criteria:
+        - Valid transitions: active ↔ inactive, active → deceased, active → merged
+        - Invalid transitions blocked with clear error messages
+        - Reason required for all status changes
+        - Authorization checks for sensitive status changes (deceased, merged)
+    - Priority: HIGH
 
 2. **Automated Status Management**
-   - Description: Automatic status updates based on patient activity and system events
-   - Acceptance Criteria:
-     - Auto-activate inactive patients when scheduled for appointments
-     - Inactive status for patients with no activity for configurable period
-     - Status notifications for administrative review
-     - Batch status processing for large datasets
-   - Priority: MEDIUM
+    - Description: Automatic status updates based on patient activity and system events
+    - Acceptance Criteria:
+        - Auto-activate inactive patients when scheduled for appointments
+        - Inactive status for patients with no activity for configurable period
+        - Status notifications for administrative review
+        - Batch status processing for large datasets
+    - Priority: MEDIUM
 
 3. **Status Change Audit Trail**
-   - Description: Complete tracking of all patient status modifications
-   - Acceptance Criteria:
-     - Record all status changes with timestamp and user attribution
-     - Track reason for status change and supporting documentation
-     - Status change history accessible from patient profile
-     - Audit reports for compliance and administrative review
-   - Priority: HIGH
+    - Description: Complete tracking of all patient status modifications
+    - Acceptance Criteria:
+        - Record all status changes with timestamp and user attribution
+        - Track reason for status change and supporting documentation
+        - Status change history accessible from patient profile
+        - Audit reports for compliance and administrative review
+    - Priority: HIGH
 
 4. **Status-Based System Behavior**
-   - Description: System behavior adaptation based on patient status
-   - Acceptance Criteria:
-     - Deceased patients cannot be scheduled for new appointments
-     - Merged patients redirect to primary patient record
-     - Inactive patients show warnings during scheduling
-     - Status-based filtering in patient search and reports
-   - Priority: HIGH
+    - Description: System behavior adaptation based on patient status
+    - Acceptance Criteria:
+        - Deceased patients cannot be scheduled for new appointments
+        - Merged patients redirect to primary patient record
+        - Inactive patients show warnings during scheduling
+        - Status-based filtering in patient search and reports
+    - Priority: HIGH
 
 5. **Bulk Status Management**
-   - Description: Administrative tools for managing multiple patient statuses
-   - Acceptance Criteria:
-     - Bulk status update interface with validation
-     - CSV import/export for status management
-     - Status change preview and confirmation
-     - Progress tracking for large batch operations
-   - Priority: LOW
+    - Description: Administrative tools for managing multiple patient statuses
+    - Acceptance Criteria:
+        - Bulk status update interface with validation
+        - CSV import/export for status management
+        - Status change preview and confirmation
+        - Progress tracking for large batch operations
+    - Priority: LOW
 
 ### Technical Requirements
+
 ```yaml
-performance:
-  - requirement: "Status change processing time"
-    target: "< 200ms for individual status updates"
-    
-  - requirement: "Bulk status operation performance"
-    target: "Process 1000 status changes per minute"
-    
 security:
   - requirement: "Status change authorization"
     implementation: "Role-based permissions for different status transitions"
-    
+
   - requirement: "Audit trail integrity"
     implementation: "Immutable status change records with cryptographic verification"
-    
+
 compatibility:
   - requirement: "Status consistency across system"
     scope: "Ensure status changes are reflected in all dependent systems"
@@ -92,17 +92,18 @@ compatibility:
 ## Implementation Details
 
 ### Technical Approach
+
 ```yaml
 # Status Management Strategy
 backend_implementation:
   - service: "PatientStatusService"
     purpose: "Core status management logic and validation"
     methods: "changeStatus, validateTransition, getStatusHistory"
-    
+
   - service: "StatusWorkflowService"
     purpose: "Workflow automation and business rule enforcement"
     methods: "automateStatusChanges, scheduleStatusReviews"
-    
+
   - service: "StatusAuditService"
     purpose: "Audit trail management and compliance reporting"
     methods: "logStatusChange, getAuditTrail, generateComplianceReport"
@@ -111,11 +112,11 @@ frontend_implementation:
   - component: "PatientStatusManager"
     purpose: "Status change interface with validation"
     features: "Status selection, reason entry, confirmation dialogs"
-    
+
   - component: "StatusHistoryPanel"
     purpose: "Display status change history and audit trail"
     features: "Timeline view, filtering, detailed change information"
-    
+
   - component: "BulkStatusManager"
     purpose: "Administrative bulk status management"
     features: "Batch selection, preview, progress tracking"
@@ -124,23 +125,24 @@ database_schema:
   - table: "patient_status_changes"
     purpose: "Audit trail for all status modifications"
     fields: "patient_id, old_status, new_status, reason, user_id, timestamp"
-    
+
   - table: "status_workflow_rules"
     purpose: "Configurable status transition rules"
     fields: "from_status, to_status, required_permissions, automation_rules"
 ```
 
 ### Integration Points
+
 ```yaml
 dependencies:
   - dependency: "Patient Profile Management API (TASK-003)"
     type: "API"
     status: "IN_PROGRESS"
-    
+
   - dependency: "User authentication and authorization system"
     type: "SERVICE"
     status: "AVAILABLE"
-    
+
 provides:
   - deliverable: "Patient status management APIs and UI components"
     interface: "RESTful API and React components for status management"
@@ -148,6 +150,7 @@ provides:
 ```
 
 ### Code Patterns to Follow
+
 ```typescript
 // Backend Implementation
 
@@ -854,6 +857,7 @@ export function getStatusTransitionWarning(
 ## Testing Requirements
 
 ### Test Coverage
+
 ```yaml
 unit_tests:
   - focus: "Status transition validation and workflow logic"
@@ -865,7 +869,7 @@ unit_tests:
     "Status change audit trail creation",
     "Bulk status change processing"
   ]
-  
+
 integration_tests:
   - focus: "Complete status management workflow"
   - test_environment: "Test database with patient fixtures and status scenarios"
@@ -878,6 +882,7 @@ integration_tests:
 ```
 
 ### Test Scenarios
+
 ```yaml
 happy_path:
   - scenario: "Change active patient to inactive status"
@@ -888,16 +893,16 @@ happy_path:
       "Verify status updated and audit trail created"
     ]
     expected_result: "Status changed successfully with audit record"
-    
+
 error_cases:
   - scenario: "Invalid status transition attempt"
     trigger: "Attempt to change deceased patient to active status"
     expected_behavior: "Transition blocked with clear error message"
-    
+
   - scenario: "Insufficient permissions for sensitive transition"
     trigger: "User without sensitive permissions tries to mark patient as deceased"
     expected_behavior: "Permission error with appropriate message"
-    
+
 edge_cases:
   - scenario: "Concurrent status changes on same patient"
     conditions: "Two users attempt status changes simultaneously"
@@ -907,17 +912,18 @@ edge_cases:
 ## Context References
 
 ### From Project
+
 ```yaml
 tech_stack_references:
   - "NestJS with TypeORM for status management services"
   - "React with TypeScript for status management UI"
   - "Role-based authorization for status change permissions"
-  
+
 architecture_patterns:
   - "Service-oriented pattern for status workflow management"
   - "Audit trail pattern for compliance and tracking"
   - "State machine pattern for status transitions"
-  
+
 code_standards:
   - "Comprehensive validation for status changes"
   - "Transaction safety for status updates"
@@ -925,18 +931,19 @@ code_standards:
 ```
 
 ### From Epic
+
 ```yaml
 business_rules:
   - "BR-P008: Patient status must follow valid transitions"
   - "Status changes require proper authorization and audit trail"
   - "Deceased and merged patients have restricted system access"
   - "Status changes affect appointment scheduling and billing"
-  
+
 domain_model:
   - "PatientStatus enum with defined transitions"
   - "PatientStatusChange entity for audit trail"
   - "Status-dependent business logic throughout system"
-  
+
 integration_points:
   - "Integrates with patient profile management"
   - "Affects appointment scheduling workflows"
@@ -946,6 +953,7 @@ integration_points:
 ## Acceptance Criteria
 
 ### Functional Acceptance
+
 - [ ] Patient status transitions follow defined business rules correctly
 - [ ] Invalid status transitions are blocked with clear error messages
 - [ ] Status changes require appropriate authorization and reasons
@@ -953,15 +961,16 @@ integration_points:
 - [ ] Status-dependent system behavior works correctly across all modules
 - [ ] Bulk status management supports administrative operations
 
-### Technical Acceptance  
+### Technical Acceptance
+
 - [ ] Status management services follow NestJS architectural patterns
 - [ ] Unit tests written and passing (>= 90% coverage)
 - [ ] Integration tests cover status workflow scenarios
 - [ ] Transaction safety ensures data integrity during status changes
-- [ ] Performance requirements met for status operations
 - [ ] Audit trail provides complete compliance tracking
 
 ### Quality Acceptance
+
 - [ ] Code review completed and approved
 - [ ] Security validation for status change authorization
 - [ ] User experience testing confirms intuitive status management

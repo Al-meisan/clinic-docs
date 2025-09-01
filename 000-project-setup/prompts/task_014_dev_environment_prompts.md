@@ -138,7 +138,7 @@ Part of **Project Setup Epic (EPIC-000)** establishing testing foundation for he
 - Custom matchers for healthcare-specific assertions
 
 **Testing Utilities to Create**:
-- Patient data mocking utilities (secure, HIPAA-compliant)
+- Patient data mocking utilities (secure, healthcare privacy-compliant)
 - Clinical workflow testing helpers
 - Accessibility testing automation
 - Medical form testing utilities
@@ -164,7 +164,7 @@ src/
    - Generate realistic but fake patient data
    - Ensure no real patient information in test data
    - Support various medical scenarios and edge cases
-   - HIPAA-compliant data generation patterns
+   - healthcare privacy-compliant data generation patterns
 
 2. **Clinical Workflow Testing**
    - Test appointment scheduling workflows

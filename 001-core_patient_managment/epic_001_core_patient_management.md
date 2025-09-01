@@ -14,7 +14,7 @@
 
 **Success Criteria:** 
 - 90% reduction in patient registration time compared to paper-based systems
-- 100% of patient searches return results within 2 seconds
+- Patient searches return results promptly
 - Zero data loss during patient profile updates
 - 95% user satisfaction with patient search and registration workflows
 - Support for Arabic and French patient data entry and display
@@ -26,7 +26,6 @@
 - Comprehensive patient search with multiple criteria (name, phone, DOB, patient ID)
 - Patient profile management with edit capabilities and audit trail
 - billing
-- Insurance information capture and management
 - Patient status management (active, inactive, deceased, merged)
 - Real-time patient data validation and duplicate detection
 - Multi-language support (Arabic/French) for patient information
@@ -50,7 +49,7 @@ story_1:
   i_want: "to register new patients quickly with all required information"
   so_that: "patients can be scheduled for appointments and receive care without delays"
   acceptance_criteria:
-    - "Complete patient registration in under 3 minutes"
+    - "Complete patient registration quickly"
     - "Automatic generation of unique patient ID"
     - "Validation prevents duplicate patient creation"
     - "Support for Arabic and French data entry"
@@ -62,7 +61,7 @@ story_2:
   so_that: "I can access patient information efficiently and provide appropriate care"
   acceptance_criteria:
     - "Search by name, phone, DOB, or patient ID"
-    - "Results displayed within 2 seconds"
+    - "Results displayed promptly"
     - "Recent patients list for quick access"
     - "Filter options for active/inactive patients"
     - "Clear patient identification with photos"
@@ -78,16 +77,6 @@ story_3:
     - "Audit trail shows who made changes and when"
     - "Validation prevents invalid contact information"
 
-story_4:
-  as_a: "Administrative Staff"
-  i_want: "to manage patient insurance information accurately"
-  so_that: "billing and coverage verification can be processed correctly"
-  acceptance_criteria:
-    - "Capture insurance provider, policy number, group number"
-    - "Track copay amounts and deductible information"
-    - "Mark insurance as active/inactive with expiration dates"
-    - "Support multiple insurance policies per patient"
-    - "Validate insurance information format"
 ```
 
 ### Detailed Requirements
@@ -107,22 +96,17 @@ story_4:
    - Priority: HIGH
    - Dependencies: Patient registration system
 
-4. **Insurance Information Management**
-   - Description: Capture and manage patient insurance details with validation
-   - Priority: MEDIUM
-   - Dependencies: Patient profile system
-
-5. **Patient Status Workflow**
+4. **Patient Status Workflow**
    - Description: Manage patient lifecycle status with proper transitions and business rules
    - Priority: MEDIUM
    - Dependencies: Patient profile system, audit logging
 
-6. **Multi-language Patient Data**
+5. **Multi-language Patient Data**
    - Description: Support Arabic and French for patient information display and data entry
    - Priority: HIGH
    - Dependencies: Internationalization framework
 
-7. **Duplicate Detection System**
+6. **Duplicate Detection System**
    - Description: Prevent duplicate patient creation using intelligent matching algorithms
    - Priority: MEDIUM
    - Dependencies: Patient search system
@@ -140,7 +124,6 @@ Patient:
     - middleName: string (optional)
     - dateOfBirth: Date
     - gender: Gender enum
-    - ssn: string (last 4 digits only, Algeria specific)
     - status: PatientStatus enum
     - preferredLanguage: string (ar/fr)
     - preferredContactMethod: ContactMethod enum
@@ -155,8 +138,6 @@ Patient:
       type: "one-to-one"
     - relates_to: "EmergencyContact"
       type: "one-to-many"
-    - relates_to: "InsuranceInfo"
-      type: "one-to-one"
   business_rules:
     - "Patient ID must be unique across the entire system"
     - "Date of birth cannot be in the future"
@@ -210,24 +191,6 @@ EmergencyContact:
     - "Primary emergency contact must be designated"
     - "Emergency contact phone is mandatory"
 
-InsuranceInfo:
-  attributes:
-    - provider: string
-    - policyNumber: string
-    - groupNumber: string (optional)
-    - subscriberId: string
-    - subscriberName: string
-    - copayAmount: number (optional)
-    - deductible: number (optional)
-    - isActive: boolean
-    - expirationDate: Date (optional)
-  relationships:
-    - relates_to: "Patient"
-      type: "one-to-one"
-  business_rules:
-    - "Provider and policy number are mandatory"
-    - "Policy number must be unique per provider"
-    - "Active insurance cannot have past expiration date"
 ```
 
 ### Business Rules
@@ -283,7 +246,7 @@ rules:
 dependencies:
   - epic: "Infrastructure Setup"
     dependency_type: "HARD"
-    what_we_need: "AWS infrastructure, database, authentication system, i18n framework"
+    what_we_need: "Cloud infrastructure, database, authentication system, i18n framework"
     
   - epic: "EPIC-002 (Appointment Scheduling)"
     dependency_type: "SOFT"
@@ -319,7 +282,7 @@ provided_apis:
 
 ```yaml
 consumed_apis:
-  - source: "AWS Cognito"
+  - source: "JWT Authentication Service"
     endpoints: "User authentication and authorization endpoints"
     purpose: "User authentication and scope-based access control"
 ```
@@ -352,19 +315,19 @@ decisions:
 ```yaml
 performance:
   - metric: "Patient search response time"
-    target: "< 2 seconds for any search query"
+    target: "Fast search query responses"
     measurement: "API response time monitoring"
     
   - metric: "Patient registration completion time"
-    target: "< 3 minutes for complete registration"
+    target: "Efficient registration process"
     measurement: "User interaction tracking from start to finish"
     
   - metric: "Database query performance"
-    target: "< 100ms for patient lookup queries"
+    target: "Optimized patient lookup queries"
     measurement: "Database query monitoring and slow query logging"
     
   - metric: "Concurrent user support"
-    target: "Support 50 concurrent users without performance degradation"
+    target: "Support multiple concurrent users effectively"
     measurement: "Load testing and performance monitoring"
 ```
 
@@ -372,8 +335,8 @@ performance:
 
 ```yaml
 security:
-  - consideration: "Patient data encryption at rest and in transit"
-    implementation: "AWS RDS encryption, HTTPS for all API calls"
+  - consideration: "Patient data security and protection"
+    implementation: "Database security, HTTPS for all API calls"
     validation: "Security audit and penetration testing"
     
   - consideration: "Role-based access control for patient information"
@@ -397,11 +360,10 @@ security:
 - [ ] **[TASK-004]:** Patient Registration Frontend Interface - Build React components for patient registration form with validation
 - [ ] **[TASK-005]:** Patient Search Frontend Interface - Create patient search components with real-time results and filtering
 - [ ] **[TASK-006]:** Patient Profile Frontend Interface - Build patient profile view and edit components
-- [ ] **[TASK-007]:** Insurance Information Management - Create insurance capture and management functionality
-- [ ] **[TASK-008]:** Duplicate Detection System - Implement intelligent duplicate prevention during registration
-- [ ] **[TASK-009]:** Multi-language Support Integration - Implement Arabic/French support for patient data
-- [ ] **[TASK-010]:** Patient Status Management - Create status workflow management with proper transitions
-- [ ] **[TASK-011]:** Database Optimization - Implement proper indexing and query optimization for patient searches
-- [ ] **[TASK-012]:** Integration Testing - Comprehensive testing of all patient management workflows
-- [ ] **[TASK-013]:** Performance Optimization - Optimize search performance and database queries
-- [ ] **[TASK-014]:** Security Implementation - Implement role-based access control and audit logging
+- [ ] **[TASK-007]:** Duplicate Detection System - Implement intelligent duplicate prevention during registration
+- [ ] **[TASK-008]:** Multi-language Support Integration - Implement Arabic/French support for patient data
+- [ ] **[TASK-009]:** Patient Status Management - Create status workflow management with proper transitions
+- [ ] **[TASK-010]:** Database Optimization - Implement proper indexing and query optimization for patient searches
+- [ ] **[TASK-011]:** Integration Testing - Comprehensive testing of all patient management workflows
+- [ ] **[TASK-012]:** Performance Optimization - Optimize search performance and database queries
+- [ ] **[TASK-013]:** Security Implementation - Implement role-based access control and audit logging

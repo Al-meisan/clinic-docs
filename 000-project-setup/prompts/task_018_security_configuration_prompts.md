@@ -16,9 +16,9 @@ Implement comprehensive HTTP security headers middleware for the NestJS backend 
 
 ## EPIC CONTEXT
 
-**Business Requirements**: Healthcare application requiring HIPAA compliance and comprehensive security protection for sensitive patient data. Zero trust security model implementation with defense in depth strategy.
+**Business Requirements**: Healthcare application requiring healthcare privacy compliance and comprehensive security protection for sensitive patient data. Zero trust security model implementation with defense in depth strategy.
 
-**Integration Points**: Security middleware must integrate with existing authentication system (AWS Cognito) and apply to all API routes consistently.
+**Integration Points**: Security middleware must integrate with existing authentication system (JWT authentication) and apply to all API routes consistently.
 
 ## TASK CONTEXT
 
@@ -30,7 +30,7 @@ Implement comprehensive HTTP security headers middleware for the NestJS backend 
 
 **Healthcare Data Protection**: Patient information requires strict security controls with audit trails. All HTTP responses must include appropriate security headers to prevent client-side attacks and ensure data protection compliance.
 
-**Compliance Requirements**: HIPAA compliance mandates comprehensive security controls including protection against common web vulnerabilities through appropriate HTTP security headers.
+**Compliance Requirements**: healthcare privacy compliance mandates comprehensive security controls including protection against common web vulnerabilities through appropriate HTTP security headers.
 
 ## FUNCTIONAL REQUIREMENTS
 
@@ -109,17 +109,17 @@ Implement secure Cross-Origin Resource Sharing (CORS) configuration for the Nest
 
 ## PROJECT CONTEXT
 
-**Tech Stack**: NestJS with TypeScript backend, React frontend with TypeScript, AWS infrastructure supporting multi-environment deployment (dev, staging, production).
+**Tech Stack**: NestJS with TypeScript backend, React frontend with TypeScript, backend infrastructure supporting multi-environment deployment (dev, staging, production).
 
 **Current Application State**: 
 - NestJS backend with API endpoints established
 - Environment configuration system in place
 - Frontend React application consuming backend APIs
-- Authentication system using AWS Cognito tokens
+- Authentication system using JWT tokens
 
 ## EPIC CONTEXT
 
-**Business Requirements**: Healthcare application requiring strict access controls and HIPAA compliance. CORS policies must prevent unauthorized access while supporting legitimate frontend applications.
+**Business Requirements**: Healthcare application requiring strict access controls and healthcare privacy compliance. CORS policies must prevent unauthorized access while supporting legitimate frontend applications.
 
 **Security Model**: Zero trust security model requiring explicit authorization for all cross-origin requests with comprehensive logging of access attempts.
 
@@ -213,7 +213,7 @@ Implement comprehensive rate limiting system for the NestJS backend using Redis 
 
 ## PROJECT CONTEXT
 
-**Tech Stack**: NestJS with TypeScript backend, Redis for caching and session storage, AWS infrastructure with auto-scaling capabilities.
+**Tech Stack**: NestJS with TypeScript backend, Redis for caching and session storage, backend infrastructure with auto-scaling capabilities.
 
 **Current Infrastructure**: 
 - NestJS application with guard and interceptor architecture
@@ -349,7 +349,7 @@ Implement comprehensive input validation and sanitization framework for all API 
 
 **Business Requirements**: Healthcare application handling sensitive patient data requiring comprehensive input validation to prevent injection attacks and ensure data integrity.
 
-**Compliance Requirements**: HIPAA compliance requires proper data validation and sanitization to protect patient information from malicious inputs.
+**Compliance Requirements**: healthcare privacy compliance requires proper data validation and sanitization to protect patient information from malicious inputs.
 
 ## TASK CONTEXT
 
@@ -457,21 +457,21 @@ export class MedicalRecordNumberValidator implements ValidatorConstraintInterfac
 
 # PROMPT 5: Authentication Security Enhancement
 
-Enhance the existing AWS Cognito authentication system with secure session management, brute force protection, token handling best practices, and comprehensive security logging to provide robust authentication security.
+Enhance the existing JWT authentication system with secure session management, brute force protection, token handling best practices, and comprehensive security logging to provide robust authentication security.
 
 ## PROJECT CONTEXT
 
-**Tech Stack**: NestJS backend with AWS Cognito integration, JWT token handling, existing authentication guards and decorators.
+**Tech Stack**: NestJS backend with JWT authentication integration, JWT token handling, existing authentication guards and decorators.
 
 **Current Authentication State**:
-- AWS Cognito user pool integration established
+- JWT authentication integration established
 - JWT token validation implemented
 - Basic authentication guards in place
 - User role and permission system operational
 
 ## EPIC CONTEXT
 
-**Business Requirements**: Healthcare application requiring secure authentication to protect sensitive patient data with HIPAA-compliant access controls.
+**Business Requirements**: Healthcare application requiring secure authentication to protect sensitive patient data with healthcare privacy-compliant access controls.
 
 **Security Model**: Zero trust authentication model requiring comprehensive session management, brute force protection, and audit logging for all authentication events.
 
@@ -485,7 +485,7 @@ Enhance the existing AWS Cognito authentication system with secure session manag
 
 **Healthcare Access Control**: Medical professionals require secure but efficient access to patient data. Authentication must be robust without impeding clinical workflows.
 
-**Compliance Requirements**: HIPAA mandates secure authentication with comprehensive audit trails for all access to protected health information.
+**Compliance Requirements**: healthcare privacy mandates secure authentication with comprehensive audit trails for all access to protected health information.
 
 ## FUNCTIONAL REQUIREMENTS
 

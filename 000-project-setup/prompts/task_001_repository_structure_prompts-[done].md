@@ -5,7 +5,7 @@
 Create the initial folder structure, configuration files, and basic setup for the clinic-backend repository following NestJS and TypeScript standards with proper gitignore and environment configuration.
 
 ## PROJECT CONTEXT
-**Tech Stack**: TypeScript with NestJS for backend development, domain-driven design with feature modules, PostgreSQL database with TypeORM, AWS infrastructure deployment.
+**Tech Stack**: TypeScript with NestJS for backend development, domain-driven design with feature modules, PostgreSQL database with TypeORM.
 
 **Architecture Patterns**: 
 - Feature-based folder structure under `src/features/`
@@ -115,63 +115,10 @@ clinic-portal/src/
 
 ---
 
-# PROMPT 3: Create Clinic-Infra Repository Foundation
-
-Create the initial folder structure and configuration files for the clinic-infra repository following Terraform best practices and Infrastructure as Code standards for AWS deployment.
-
-## PROJECT CONTEXT
-**Tech Stack**: Terraform for Infrastructure as Code, AWS as cloud provider, cost-effective architecture approach, environment-specific configurations for dev/staging/prod.
-
-**Architecture Patterns**:
-- Environment-based folder structure for different deployment stages
-- Reusable Terraform modules for common infrastructure patterns
-- Centralized variable management and state configuration
-
-## EPIC CONTEXT
-**Business Goal**: Establish foundational repository structure and development standards for the MedFlow project enabling efficient team collaboration and standardized development practices across all repositories.
-
-## TASK CONTEXT
-**Primary Objective**: Create clinic-infra repository with Terraform modules, environment-specific configurations, and Infrastructure as Code structure that supports AWS deployment across multiple environments.
-
-**Repository Naming**: Follow `clinic-infra` naming convention with lowercase and hyphens.
-
-## TECHNICAL REQUIREMENTS
-**Infrastructure Folder Structure**:
-```
-├── README.md
-├── .gitignore
-├── environments/              # Environment-specific configs
-│   ├── dev/
-│   ├── staging/
-│   └── prod/
-├── modules/                   # Reusable Terraform modules
-└── scripts/                   # Deployment and utility scripts
-```
-
-**Configuration Files Required**:
-- `.gitignore` with Terraform-specific exclusions (state files, .terraform/, etc.)
-- Environment folders with main.tf, variables.tf, outputs.tf structure
-- Module templates for common infrastructure patterns
-
-## FUNCTIONAL REQUIREMENTS
-- Repository structure must support multiple environment deployments
-- Terraform modules must be reusable across different environments
-- State management and variable configuration must be environment-specific
-- Scripts for common deployment tasks
-
-## VALIDATION CRITERIA
-- [ ] Repository contains environment folders (dev, staging, prod) with proper Terraform structure
-- [ ] .gitignore excludes .terraform/, *.tfstate, *.tfvars, and other Terraform artifacts
-- [ ] modules/ directory prepared for reusable infrastructure components
-- [ ] scripts/ directory contains deployment and utility scripts
-- [ ] Each environment folder has placeholder main.tf, variables.tf, and outputs.tf files
-- [ ] README.md includes basic Terraform usage instructions and prerequisites
-
----
 
 # PROMPT 4: Create Comprehensive Repository Documentation
 
-Create detailed README.md files for all three repositories (clinic-backend, clinic-portal, clinic-infra) with setup instructions, development workflows, and environment configuration that enables new developers to get started within 30 minutes.
+Create detailed README.md files for both repositories (clinic-backend, clinic-portal) with setup instructions, development workflows, and environment configuration that enables new developers to get started within 30 minutes.
 
 ## PROJECT CONTEXT
 **Development Standards**: New developer onboarding must be completed within 30 minutes, documentation must include prerequisites, setup instructions, development workflow, and deployment instructions using markdown formatting without emoji.
@@ -212,12 +159,6 @@ Create detailed README.md files for all three repositories (clinic-backend, clin
 - Build and preview commands
 - Component development guidelines
 
-**Infrastructure README (clinic-infra)**:
-- Terraform installation requirements
-- AWS CLI configuration steps
-- Environment setup for dev/staging/prod
-- Deployment commands and workflow
-- State management instructions
 
 ## VALIDATION CRITERIA
 - [ ] Each repository has comprehensive README.md with all required sections
@@ -278,11 +219,6 @@ Set up ESLint, Prettier, and development tool configurations across all three re
 - Pre-commit hooks for TypeScript and component validation
 - Vite integration with linting during development
 
-**Infrastructure Development Tools (clinic-infra)**:
-- Terraform formatting with `terraform fmt`
-- Validation scripts for Terraform configuration
-- Pre-commit hooks for infrastructure code quality
-- Documentation validation scripts
 
 ## VALIDATION CRITERIA
 - [ ] All repositories have properly configured .eslintrc.js files

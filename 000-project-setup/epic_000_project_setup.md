@@ -13,22 +13,21 @@
 - Standardized setup enables consistent development practices across team
 
 **Success Criteria:** 
-- All three repositories (clinic-backend, clinic-portal, clinic-infra) are created and properly configured
-- CI/CD pipelines are functional and deploying to development environment
-- Authentication system is working with AWS Cognito integration
+- Both repositories (clinic-backend, clinic-portal) are created and properly configured
+- Authentication system is working with JWT-based authentication
 - Frontend routing and layout system supports future feature development
 - All development tools and standards are documented and working
 - Development environment can be set up by new developers in under 30 minutes
-- Infrastructure provisions successfully in AWS with proper security configurations
+- Application can be deployed with proper security configurations
 
 ### Scope
 
 **In Scope:**
 - Repository structure setup for backend, frontend, and infrastructure
-- Backend NestJS application with TypeScript, TypeORM, and AWS integrations
+- Backend NestJS application with TypeScript and TypeORM
 - Frontend React application with TypeScript, Tailwind CSS, and shadcn/ui
-- AWS infrastructure setup with Terraform (VPC, RDS, ECS, Cognito, S3, CloudWatch)
-- Authentication system implementation with AWS Cognito
+- Deployment configuration with Docker and database setup
+- Authentication system implementation with JWT
 - Frontend routing configuration with protected routes
 - State management setup with Zustand and TanStack Query
 - Layout system supporting single-doctor and multi-provider modes
@@ -56,7 +55,7 @@ story_1:
   i_want: "to set up the development environment quickly with all required dependencies"
   so_that: "I can start building healthcare features without infrastructure blockers"
   acceptance_criteria:
-    - "Backend repository with NestJS, TypeORM, and AWS SDK configured"
+    - "Backend repository with NestJS and TypeORM configured"
     - "Frontend repository with React, TypeScript, and UI framework ready"
     - "All development tools (linting, formatting, testing) working"
     - "Documentation for local development setup available"
@@ -64,14 +63,14 @@ story_1:
 
 story_2:
   as_a: "DevOps Engineer"
-  i_want: "to provision AWS infrastructure using Infrastructure as Code"
+  i_want: "to deploy the application using containerization"
   so_that: "environments are reproducible, scalable, and properly secured"
   acceptance_criteria:
-    - "Terraform modules for all AWS services (VPC, RDS, ECS, Cognito)"
+    - "Docker containers for backend and frontend applications"
     - "Separate configurations for dev, staging, and production environments"
-    - "Infrastructure can be provisioned and destroyed reliably"
-    - "Security groups and IAM policies follow least privilege principle"
-    - "Resource tagging and cost monitoring configured"
+    - "Application can be deployed reliably"
+    - "Security configurations follow best practices"
+    - "Environment-specific configuration management"
 
 story_3:
   as_a: "Healthcare Provider"
@@ -79,7 +78,7 @@ story_3:
   so_that: "I can access patient information and clinic features safely"
   acceptance_criteria:
     - "Secure login form with email/password authentication"
-    - "AWS Cognito integration for user management"
+    - "JWT-based authentication for user management"
     - "Role-based access control with healthcare-specific scopes"
     - "Automatic token refresh and session management"
     - "Secure logout that clears all session data"
@@ -99,24 +98,24 @@ story_4:
 ### Detailed Requirements
 
 1. **Backend Infrastructure Setup**
-   - Description: Complete NestJS application with database, authentication, and AWS service integrations
+   - Description: Complete NestJS application with database and authentication
    - Priority: HIGH
-   - Dependencies: AWS account, Terraform infrastructure
+   - Dependencies: Database setup, Docker configuration
 
 2. **Frontend Application Foundation**
    - Description: React application with routing, authentication, and UI framework
    - Priority: HIGH
    - Dependencies: Backend API endpoints, authentication service
 
-3. **AWS Infrastructure Provisioning**
-   - Description: Terraform-managed AWS resources for hosting and services
+3. **Deployment Configuration**
+   - Description: Docker-based deployment setup for hosting applications
    - Priority: HIGH
-   - Dependencies: AWS account with appropriate permissions
+   - Dependencies: Docker, database server
 
 4. **Authentication System Implementation**
-   - Description: AWS Cognito integration with OAuth2 scopes and role management
+   - Description: JWT-based authentication with OAuth2 scopes and role management
    - Priority: HIGH
-   - Dependencies: AWS Cognito service, backend API
+   - Dependencies: Backend API, database
 
 5. **Development Environment Configuration**
    - Description: Standardized development tools and workflows
@@ -141,7 +140,7 @@ story_4:
 User:
   attributes:
     - id: UUID
-    - cognitoId: string (AWS Cognito user ID)
+    - authId: string (Authentication system user ID)
     - email: string
     - firstName: string
     - lastName: string
@@ -161,7 +160,7 @@ User:
       type: "one-to-one" (optional)
   business_rules:
     - "Email must be unique across the system"
-    - "Cognito ID must match AWS Cognito user pool"
+    - "User ID must be unique and properly validated"
     - "User role determines available scopes"
     - "Clinic ID determines data access boundary"
 
@@ -222,7 +221,7 @@ rules:
   - rule_id: "BR-S002"
     rule: "System Administrator has admin:full scope with complete system access"
     applies_to: "User role assignment and scope management"
-    validation: "Role-based scope assignment in Cognito"
+    validation: "Role-based scope assignment in authentication system"
     
   - rule_id: "BR-S009"
     rule: "Cross-clinic data access is prohibited unless explicitly authorized"
@@ -264,7 +263,7 @@ dependencies:
 ```yaml
 provided_apis:
   - endpoint: "POST /auth/login"
-    purpose: "User authentication with AWS Cognito"
+    purpose: "User authentication with JWT"
     consumers: "Frontend login component, mobile applications"
     
   - endpoint: "POST /auth/refresh"
@@ -288,11 +287,11 @@ provided_apis:
 
 ```yaml
 consumed_apis:
-  - source: "AWS Cognito"
-    endpoints: "Authentication, user management, token validation"
+  - source: "Database"
+    endpoints: "User management, session storage"
     purpose: "User authentication and session management"
     
-  - source: "AWS S3"
+  - source: "File Storage Service"
     endpoints: "File upload, retrieval, and management"
     purpose: "Document storage and file management"
 ```
@@ -306,14 +305,6 @@ decisions:
   - decision: "Use NestJS with TypeScript for backend development"
     rationale: "Provides enterprise-grade architecture with excellent TypeScript support and built-in dependency injection"
     impact: "Faster development, better maintainability, strong typing throughout"
-    
-  - decision: "Implement Infrastructure as Code with Terraform"
-    rationale: "Ensures reproducible, version-controlled infrastructure with multi-environment support"
-    impact: "Consistent deployments, easier scaling, infrastructure versioning"
-    
-  - decision: "Use AWS Cognito for authentication and user management"
-    rationale: "Provides enterprise-grade security with OAuth2/OIDC compliance and reduces custom auth development"
-    impact: "Reduced security risk, faster implementation, scalable user management"
     
   - decision: "Implement React with TypeScript and shadcn/ui for frontend"
     rationale: "Modern, performant UI with excellent TypeScript support and consistent design system"
@@ -350,12 +341,12 @@ performance:
 ```yaml
 security:
   - consideration: "Secure secret management for all environments"
-    implementation: "AWS Secrets Manager for production, environment variables for development"
+    implementation: "Environment variables with secure storage for production"
     validation: "Security audit of secret storage and access patterns"
     
-  - consideration: "Network security with proper VPC configuration"
-    implementation: "Private subnets for databases, public subnets for load balancers, security groups with minimal access"
-    validation: "Network penetration testing and security group audit"
+  - consideration: "Network security with proper configuration"
+    implementation: "Secure network configuration with firewall rules and access controls"
+    validation: "Network security testing and access control audit"
     
   - consideration: "Application security with input validation and HTTPS"
     implementation: "class-validator for input validation, HTTPS everywhere, CORS configuration"
@@ -368,22 +359,21 @@ security:
 
 ## Current Tasks
 
-- [X] **[TASK-001]:** Repository Structure Setup - Create and configure clinic-backend, clinic-portal, and clinic-infra repositories with proper README and gitignore files
-- [ ] **[TASK-002]:** Terraform Infrastructure Base - Create AWS infrastructure modules for VPC, security groups, and basic networking
+- [X] **[TASK-001]:** Repository Structure Setup - Create and configure clinic-backend and clinic-portal repositories with proper README and gitignore files
+- [ ] **[TASK-002]:** Deployment Configuration - Set up Docker containers and deployment configuration
 - [ ] **[TASK-003]:** Backend NestJS Application Setup - Initialize NestJS application with TypeScript, TypeORM, and basic folder structure
 - [ ] **[TASK-004]:** Database Infrastructure - Set up PostgreSQL with TypeORM, migrations, and connection configuration
-- [ ] **[TASK-005]:** AWS Cognito Integration - Configure AWS Cognito user pool and integrate with backend authentication
+- [ ] **[TASK-005]:** Authentication Service - Implement JWT-based authentication service with user management
 - [ ] **[TASK-006]:** Backend Authentication System - Implement JWT handling, guards, and role-based access control
 - [ ] **[TASK-007]:** Frontend React Application Setup - Initialize React application with TypeScript, Vite, and development tools
 - [ ] **[TASK-008]:** Frontend UI Framework Integration - Set up Tailwind CSS, shadcn/ui components, and design system
 - [ ] **[TASK-009]:** Frontend Routing System - Implement React Router with protected routes and navigation structure
-- [ ] **[TASK-010]:** Frontend Authentication Implementation - Create login/logout components with Cognito integration
+- [ ] **[TASK-010]:** Frontend Authentication Implementation - Create login/logout components with JWT authentication
 - [ ] **[TASK-011]:** State Management Setup - Configure Zustand stores and TanStack Query for data fetching
 - [ ] **[TASK-012]:** Frontend Layout System - Create responsive layouts supporting single-doctor and multi-provider modes
 - [ ] **[TASK-013]:** Internationalization Foundation - Set up i18next with Arabic and French language support
 - [ ] **[TASK-014]:** Development Environment Configuration - Configure ESLint, Prettier, Jest, and development scripts
-- [ ] **[TASK-015]:** CI/CD Pipeline Setup - Create GitHub Actions for testing, building, and deployment automation
-- [ ] **[TASK-016]:** Monitoring and Logging Setup - Configure CloudWatch, error tracking, and application monitoring
+- [ ] **[TASK-016]:** Monitoring and Logging Setup - Configure application logging and monitoring
 - [ ] **[TASK-017]:** Documentation and Developer Guide - Create comprehensive setup documentation and coding standards
 - [ ] **[TASK-018]:** Security Configuration - Implement security headers, CORS, rate limiting, and security best practices
 - [ ] **[TASK-019]:** Environment Configuration Management - Set up environment-specific configurations for dev, staging, and production

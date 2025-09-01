@@ -11,7 +11,7 @@ dependencies, configure TypeScript, ESLint, and set up the main application entr
 
 ## PROJECT CONTEXT
 
-**Tech Stack**: TypeScript with NestJS, AWS services integration, PostgreSQL database
+**Tech Stack**: TypeScript with NestJS, backend services integration, PostgreSQL database
 **Architecture**: Domain-driven design with feature modules, dependency injection
 **Code Standards**: ESLint and Prettier for code quality, Class-validator for input validation
 **Folder Structure**: Feature-based modules with shared infrastructure components
@@ -145,7 +145,7 @@ documentation, and provider information. Database operations must be secure, aud
 ## BUSINESS DOMAIN CONTEXT
 
 **Healthcare Data**: Patient information, clinical records, appointment scheduling
-**Compliance**: HIPAA compliance requires audit trails, secure data handling
+**Compliance**: Healthcare privacy compliance requires audit trails, secure data handling
 **Multi-tenancy**: Clinic-based data isolation and access control
 
 ## FUNCTIONAL REQUIREMENTS
@@ -339,20 +339,20 @@ security_config:
 
 # ~~PROMPT 4: Configuration Management and Environment Setup~~
 
-Create a comprehensive configuration management system for handling environment-specific settings, AWS service
+Create a comprehensive configuration management system for handling environment-specific settings, backend service
 configurations, and secure secret management. Implement configuration validation, environment detection, and proper
 separation of concerns for different deployment environments.
 
 ## PROJECT CONTEXT
 
 **Configuration**: Environment-based configuration with validation and type safety
-**Security**: Secure handling of database credentials, JWT secrets, and AWS configurations
+**Security**: Secure handling of database credentials, JWT secrets, and backend configurations
 **Environments**: Development, staging, and production environment support
 **Validation**: Schema validation for all configuration values
 
 ## EPIC CONTEXT
 
-Healthcare application requires secure configuration management for database connections, AWS services, authentication
+Healthcare application requires secure configuration management for database connections, backend services, authentication
 secrets, and environment-specific settings. Configuration must be validated, secure, and easily manageable across
 different deployment environments.
 
@@ -367,7 +367,7 @@ different deployment environments.
 
 **Healthcare Compliance**: Secure credential management and audit trail requirements
 **Multi-Environment**: Development, staging, and production configurations
-**AWS Integration**: Configuration for Cognito, S3, and other AWS services
+**Backend Integration**: Configuration for authentication and other backend services
 
 ## FUNCTIONAL REQUIREMENTS
 
@@ -382,7 +382,7 @@ different deployment environments.
     - Required vs optional setting validation
 
 3. **Secure Secret Management**
-    - Environment variable encryption for secrets
+    - Environment variable secure storage for secrets
     - Secure credential handling patterns
     - No hardcoded sensitive values
 
@@ -672,20 +672,20 @@ error_categories:
 - [ ] Log levels can be configured per environment
 - [ ] Error stacks are logged in development but sanitized in production
 
-# ~~PROMPT 7: Testing Foundation and CI/CD Preparation~~
+# ~~PROMPT 7: Testing Foundation and Development Environment Setup~~
 
 For this prompt some part are already implement either fully or partially, review the current implementation and only
 implement missing criteria and objective with the least amount of change possible
 
 Set up comprehensive testing infrastructure with unit tests, integration tests, and end-to-end testing capabilities.
-Configure testing utilities, create test database setup, and prepare foundation for CI/CD pipeline integration.
+Configure testing utilities, create test database setup, and prepare foundation for automated testing.
 
 ## PROJECT CONTEXT
 
 **Testing Strategy**: Unit, integration, and e2e testing with Jest and Supertest
 **Test Environment**: Isolated test database and configuration
 **Coverage**: Minimum 80% code coverage requirement
-**CI/CD**: Preparation for automated testing in deployment pipeline
+**Testing**: Preparation for automated testing in development workflow
 
 ## EPIC CONTEXT
 
@@ -694,7 +694,7 @@ infrastructure must support TDD/BDD practices and ensure all business logic is p
 
 ## TASK CONTEXT
 
-**Goal**: Complete testing infrastructure and CI/CD preparation
+**Goal**: Complete testing infrastructure and development environment preparation
 **Why**: Foundation for reliable, tested code deployment
 **Priority**: MEDIUM - Important for development workflow
 **Dependencies**: All previous prompts (1-6) should be completed first
@@ -775,7 +775,7 @@ test_configuration:
 - Testing strategy and guidelines
 - Test setup and execution instructions
 - Coverage reporting configuration
-- CI/CD integration documentation
+- Testing automation documentation
 
 ## VALIDATION CRITERIA
 
@@ -786,6 +786,6 @@ test_configuration:
 - [ ] Test utilities and factories simplify test creation
 - [ ] Test isolation prevents cross-test interference
 - [ ] Performance tests validate response time requirements
-- [ ] CI/CD test scripts are configured and functional
+- [ ] Testing scripts are configured and functional
 - [ ] Test documentation is complete and accurate
 - [ ] All existing functionality has corresponding tests

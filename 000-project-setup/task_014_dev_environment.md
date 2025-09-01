@@ -110,7 +110,7 @@ dependencies:
 provides:
   - deliverable: "Development quality tools"
     interface: "ESLint, Prettier, and testing configurations"
-    consumers: "All development team members and CI/CD pipeline"
+    consumers: "All development team members"
     
   - deliverable: "Testing framework"
     interface: "Jest configuration and testing utilities"
@@ -619,7 +619,6 @@ if ! grep -qE "$commit_regex" "$1"; then
     echo "  refactor: Code refactoring"
     echo "  test:     Test changes"
     echo "  chore:    Maintenance tasks"
-    echo "  ci:       CI/CD changes"
     echo "  perf:     Performance improvements"
     echo "  build:    Build system changes"
     echo "  revert:   Revert previous commit"
@@ -633,7 +632,7 @@ if ! grep -qE "$commit_regex" "$1"; then
 fi
 
 # Check for medical data references in commit messages
-if grep -qiE "(patient data|medical record|phi|hipaa)" "$1"; then
+if grep -qiE "(patient data|medical record|phi|healthcare privacy)" "$1"; then
     echo "⚠️  Warning: Commit message references sensitive medical data."
     echo "   Please ensure no actual patient information is included."
 fi
@@ -738,7 +737,7 @@ integration_tests:
   
 automation_tests:
   - focus: "Automated quality gate testing"
-  - test_environment: "CI/CD simulation"
+  - test_environment: "Development environment simulation"
   - key_scenarios: ["pre_commit_validation", "test_execution", "build_verification"]
 ```
 
@@ -793,7 +792,6 @@ business_rules:
   
 integration_points:
   - "Required for all development activities"
-  - "Foundation for CI/CD pipeline integration"
   - "Enables consistent code quality across features"
 ```
 

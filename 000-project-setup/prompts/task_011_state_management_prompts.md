@@ -35,7 +35,7 @@ Task-011 focuses on comprehensive state management setup using Zustand for globa
    - Manages user authentication state, user profile, and preferences
    - Persists non-sensitive authentication state to localStorage
    - Provides methods for login, logout, and preference updates
-   - Integrates with AWS Cognito user context
+   - Integrates with backend authentication user context
 
 2. **UI Store (useUIStore)**
    - Manages global UI state including notifications, modals, sidebar state, and loading indicators
@@ -91,7 +91,7 @@ Task-011 focuses on comprehensive state management setup using Zustand for globa
 Set up TanStack Query (React Query) client with healthcare-optimized configurations for efficient server state management, caching strategies, and offline capabilities tailored for clinical environments.
 
 ## PROJECT CONTEXT
-**Tech Stack**: React with TypeScript, TanStack Query for server state management, Axios for API client, and AWS Cognito for authentication.
+**Tech Stack**: React with TypeScript, TanStack Query for server state management, Axios for API client, and backend authentication.
 
 **Architecture Patterns**: Centralized query client configuration in `src/lib/query.ts`, query hooks organized by feature domains, and consistent error handling across all queries.
 

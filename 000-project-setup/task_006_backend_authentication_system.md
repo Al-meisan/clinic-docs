@@ -3,7 +3,7 @@
 ## Task Overview
 
 ### Goal
-**What to Build:** Implement comprehensive JWT token handling, authentication guards, role-based access control decorators, and user context management system integrated with AWS Cognito for the MedFlow backend application.
+**What to Build:** Implement comprehensive JWT token handling, authentication guards, role-based access control decorators, and user context management system for the MedFlow backend application.
 
 **Why:** Provides secure, scalable authentication infrastructure that enforces healthcare-specific access controls, manages user sessions, and ensures proper authorization for all API endpoints based on medical roles and permissions.
 
@@ -79,10 +79,10 @@ jwt_implementation:
   token_structure:
     - header: "JWT algorithm and type"
     - payload: "user_id, clinic_id, scopes, role, exp, iat"
-    - signature: "AWS Cognito signature verification"
+    - signature: "JWT signature verification with secret key"
     
   validation_process:
-    - signature_verification: "Verify against Cognito public keys"
+    - signature_verification: "Verify against application secret key"
     - expiration_check: "Ensure token not expired"
     - scope_extraction: "Parse user permissions from token"
     - user_context: "Build user object for request context"
@@ -91,7 +91,7 @@ jwt_implementation:
 ### Integration Points
 ```yaml
 dependencies:
-  - dependency: "AWS Cognito integration service"
+  - dependency: "JWT authentication service"
     type: "SERVICE"
     status: "IN_PROGRESS"
     
@@ -125,7 +125,7 @@ provides:
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
   constructor(
-    private readonly cognitoService: CognitoService,
+    private readonly jwtService: JwtService,
     private readonly userService: UserService,
     private readonly logger: Logger,
   ) {}
@@ -147,8 +147,8 @@ export class JwtAuthGuard implements CanActivate {
         throw new UnauthorizedException('Authentication token required');
       }
       
-      const cognitoUser = await this.cognitoService.validateToken(token);
-      const userContext = await this.buildUserContext(cognitoUser);
+      const decodedUser = await this.jwtService.verify(token);
+      const userContext = await this.buildUserContext(decodedUser);
       
       request.user = userContext;
       return true;
@@ -158,20 +158,20 @@ export class JwtAuthGuard implements CanActivate {
     }
   }
   
-  private async buildUserContext(cognitoUser: CognitoUserPayload): Promise<UserContext> {
-    const user = await this.userService.findByCognitoId(cognitoUser.sub);
+  private async buildUserContext(decodedUser: JwtPayload): Promise<UserContext> {
+    const user = await this.userService.findById(decodedUser.sub);
     if (!user) {
       throw new UnauthorizedException('User not found in system');
     }
     
     return {
       id: user.id,
-      cognitoId: cognitoUser.sub,
-      email: cognitoUser.email,
+      userId: decodedUser.sub,
+      email: decodedUser.email,
       firstName: user.firstName,
       lastName: user.lastName,
       role: user.role,
-      scopes: this.extractScopes(cognitoUser),
+      scopes: this.extractScopes(decodedUser),
       clinicId: user.clinicId,
       isActive: user.isActive,
     };
@@ -370,7 +370,7 @@ edge_cases:
 ```yaml
 tech_stack_references:
   - "NestJS guards and decorators for access control"
-  - "JWT token validation with AWS Cognito"
+  - "JWT token validation with local verification"
   - "OAuth2 scope-based authorization system"
   - "Multi-tenant architecture with clinic boundaries"
   
@@ -397,7 +397,7 @@ business_rules:
   
 integration_points:
   - "Required by all business feature modules for access control"
-  - "Integrates with AWS Cognito for user management"
+  - "Integrates with local user management system"
   - "Provides foundation for frontend protected routes"
 ```
 

@@ -3,9 +3,9 @@
 ## Task Overview
 
 ### Goal
-**What to Build:** Create comprehensive frontend authentication system with login/logout components, AWS Cognito integration, automatic token management, and user session handling for the MedFlow healthcare management application.
+**What to Build:** Create comprehensive frontend authentication system with login/logout components, JWT authentication integration, automatic token management, and user session handling for the MedFlow healthcare management application.
 
-**Why:** Provides secure, user-friendly authentication experience that integrates seamlessly with AWS Cognito, handles healthcare-specific user roles, and maintains proper session state throughout the application.
+**Why:** Provides secure, user-friendly authentication experience that integrates seamlessly with backend authentication, handles healthcare-specific user roles, and maintains proper session state throughout the application.
 
 **Definition of Done:** Complete authentication system operational with login/logout forms, automatic token refresh, user context management, and proper error handling for all authentication scenarios.
 
@@ -23,9 +23,9 @@ complexity: "HIGH"
    - Acceptance Criteria: Login form validates inputs, handles errors gracefully, and provides clear feedback to users
    - Priority: HIGH
 
-2. **AWS Cognito Integration**
-   - Description: Complete integration with AWS Cognito authentication service including user registration and password reset
-   - Acceptance Criteria: Authentication flows work seamlessly with Cognito, tokens properly managed, and user attributes retrieved
+2. **Backend Authentication Integration**
+   - Description: Complete integration with backend authentication service including user registration and password reset
+   - Acceptance Criteria: Authentication flows work seamlessly with backend API, tokens properly managed, and user attributes retrieved
    - Priority: HIGH
 
 3. **Automatic Token Management**
@@ -58,11 +58,11 @@ compatibility:
 ### Technical Approach
 ```yaml
 authentication_architecture:
-  cognito_integration:
-    - aws_amplify: "AWS Amplify for simplified Cognito integration"
-    - cognito_identity_sdk: "Direct AWS Cognito SDK integration"
+  backend_integration:
+    - api_client: "Axios or fetch for API communication"
     - jwt_decode: "Token parsing and validation"
-    - secure_storage: "Token storage with encryption"
+    - secure_storage: "Token storage with secure storage"
+    - auth_interceptors: "Request/response interceptors for token handling"
     
   state_management:
     - auth_context: "React Context for authentication state"
@@ -79,7 +79,7 @@ authentication_architecture:
 authentication_flow:
   login_process:
     - input_validation: "Email format and password requirements"
-    - cognito_authentication: "AWS Cognito login API call"
+    - backend_authentication: "Backend login API call"
     - token_storage: "Secure JWT token storage"
     - user_profile_fetch: "Retrieve user profile and permissions"
     - redirect_handling: "Navigate to intended destination"
@@ -94,8 +94,8 @@ authentication_flow:
 ### Integration Points
 ```yaml
 dependencies:
-  - dependency: "AWS Cognito user pool configuration"
-    type: "SERVICE"
+  - dependency: "Backend authentication endpoints"
+    type: "API"
     status: "IN_PROGRESS"
     
   - dependency: "React application with routing system"
@@ -412,7 +412,7 @@ export class CognitoAuth {
   }
 
   async storeTokens(authResult: AuthResult): Promise<void> {
-    // Store tokens securely (consider encryption for sensitive environments)
+    // Store tokens securely (consider secure storage for sensitive environments)
     localStorage.setItem('medflow_auth', JSON.stringify({
       accessToken: authResult.accessToken,
       refreshToken: authResult.refreshToken,
@@ -812,7 +812,7 @@ tech_stack_references:
   - "AWS Cognito for user authentication and management"
   - "React Context API for global authentication state"
   - "JWT tokens with automatic refresh mechanism"
-  - "Secure token storage with encryption considerations"
+  - "Secure token storage with secure storage considerations"
   
 architecture_patterns:
   - "Provider pattern for authentication context"
